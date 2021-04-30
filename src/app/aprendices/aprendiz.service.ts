@@ -25,20 +25,41 @@ export class AprendizService {
   }
 
   create(aprendiz: Aprendiz) : Observable<Aprendiz>{
-    return this.http.post<Aprendiz>(this.urlEndpoint, aprendiz, {headers: this.httpHeaders});
+    return this.http.post<Aprendiz>(this.urlEndpoint, aprendiz).pipe(
+      map((response: any) => response.aprendiz as Aprendiz),
+      catchError((e) => {
+        if (e.status == 400) {
+          return throwError(e);
+        }
+        if(e.error.mensaje){
+        console.error(e.error.mensaje);
+      }
+        return throwError(e);
+      }));
   }
 
   getAprendiz(id):Observable<Aprendiz>{
     return this.http.get<Aprendiz>(`${this.urlEndpoint}/${id}`).pipe(
       catchError(e => {
-        this.router.navigate(['/aprendices']);
-          console.error(e.error.mensaje);  //if (e.status != 401 && e.error.mensaje) { }
-        Swal.fire('Error al editar', e.error.mensaje, 'error');
-          return throwError(e);
+        if (e.status != 401 && e.error.mensaje) {
+          this.router.navigate(['/aprendices']);
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
       }));
   }
 
   update(aprendiz: Aprendiz): Observable<Aprendiz>{
-    return this.http.put<Aprendiz>(`${this.urlEndpoint}/${aprendiz.id}`, aprendiz, {headers: this.httpHeaders});
+    return this.http.put<Aprendiz>(`${this.urlEndpoint}/${aprendiz.id}`, aprendiz).pipe(
+      map((response: any) => response.aprendiz as Aprendiz),
+      catchError((e) => {
+        if (e.status == 400) {
+          return throwError(e);
+        }
+        if(e.error.mensaje){
+        console.error(e.error.mensaje);
+      }
+        return throwError(e);
+      }));
   }
 }

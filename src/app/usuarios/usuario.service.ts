@@ -10,7 +10,6 @@ import Swal from 'sweetalert2';
   providedIn: 'root',
 })
 export class UsuarioService {
-
   private urlEndpoint: string = 'http://localhost:8089/api/usuario';
 
   constructor(private http: HttpClient, private router: Router) {}
@@ -24,24 +23,47 @@ export class UsuarioService {
   }
 
   create(usuario: Usuario): Observable<Usuario> {
-    return this.http.post<Usuario>(this.urlEndpoint, usuario, {
-      headers: this.httpHeaders,
-    });
+    return this.http
+      .post<Usuario>(this.urlEndpoint, usuario, {
+        headers: this.httpHeaders,
+      }).pipe(
+        map((response: any) => response.usuario as Usuario),
+        catchError((e) => {
+          if (e.status == 400) {
+            return throwError(e);
+          }
+          if(e.error.mensaje){
+          console.error(e.error.mensaje);
+        }
+          return throwError(e);
+        }));
   }
 
-  getUsuario(id):Observable<Usuario>{
+  getUsuario(id): Observable<Usuario> {
     return this.http.get<Usuario>(`${this.urlEndpoint}/${id}`).pipe(
       catchError(e => {
-        this.router.navigate(['/usuarios']);
-          console.error(e.error.mensaje);  //if (e.status != 401 && e.error.mensaje) { }
-        Swal.fire('Error al editar', e.error.mensaje, 'error');
-          return throwError(e);
+        if (e.status != 401 && e.error.mensaje) {
+          this.router.navigate(['/usuarios']);
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
       }));
   }
 
-  update(usuario: Usuario):Observable<Usuario>{
-    return this.http.put<Usuario>(`${this.urlEndpoint}/${usuario.id}`, usuario, {
-      headers: this.httpHeaders,
-    });
+  update(usuario: Usuario): Observable<Usuario> {
+    return this.http.put<Usuario>(
+      `${this.urlEndpoint}/${usuario.id}`,
+      usuario
+    ).pipe(
+      map((response: any) => response.usuario as Usuario),
+      catchError((e) => {
+        if (e.status == 400) {
+          return throwError(e);
+        }
+        if(e.error.mensaje){
+        console.error(e.error.mensaje);
+      }
+        return throwError(e);
+      }));
   }
 }

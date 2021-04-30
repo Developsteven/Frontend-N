@@ -13,6 +13,7 @@ export class FormularioComponent implements OnInit {
 
   public usuario: Usuario = new Usuario();
   public titulo: string = "Crear Usuario"; 
+  public errores: string[];
 
   constructor(private usuarioService: UsuarioService,
     private router: Router,
@@ -36,6 +37,11 @@ export class FormularioComponent implements OnInit {
       usuario => {
         this.router.navigate(['/usuarios'])
         Swal.fire('Nuevo usuario', `Usuario ${usuario.nombre} creado con exito!`, 'success')
+      },
+      (err) => {
+        this.errores = err.error.errors as string[];
+        console.error('El codigo del error desde el backend: ' + err.status);
+        console.error(err.error.errors);
       }
     )
   }
@@ -44,6 +50,11 @@ export class FormularioComponent implements OnInit {
     this.usuarioService.update(this.usuario).subscribe( usuario => {
       this.router.navigate(['/usuarios'])
       Swal.fire('Usuario Actualizado', `Usuario ${usuario.nombre} actualizado con exito!`, 'success')
+    },
+    (err) => {
+      this.errores = err.error.errors as string[];
+      console.error('El codigo del error desde el backend: ' + err.status);
+      console.error(err.error.errors);
     });
   }
 }
