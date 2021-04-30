@@ -16,7 +16,7 @@ import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 const routes: Routes =[
-  {path: '', redirectTo: '/aprendices', pathMatch: 'full'},
+  {path: '', redirectTo: '/sena', pathMatch: 'full'},
   {path: 'novedades', component: AprendicesComponent},
   {path: 'usuarios', component: UsuariosComponent},
   {path: 'aprendices/form', component: FormComponent},

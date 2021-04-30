@@ -34,11 +34,16 @@ export class FormComponent implements OnInit {
   public create(): void{
     this.aprendizService.create(this.aprendiz).subscribe(
       aprendiz => {
-        this.router.navigate(['/aprendices'])
+        this.router.navigate(['novedades'])
         Swal.fire('Nuevo aprendiz',`Aprendiz ${aprendiz.nombre} creado con exito!`, 'success')
       }
     )
   }
 
-  
+  update():void{
+    this.aprendizService.update(this.aprendiz).subscribe( aprendiz => {
+      this.router.navigate(['novedades'])
+      Swal.fire('Aprendiz Actualizado',`Aprendiz ${aprendiz.nombre} actuarlizado con exito!`, 'success')
+    })
+  }
 }

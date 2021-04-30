@@ -30,4 +30,8 @@ export class AprendizService {
   getAprendiz(id):Observable<Aprendiz>{
     return this.http.get<Aprendiz>(`${this.urlEndpoint}/${id}`)
   }
+
+  update(aprendiz: Aprendiz): Observable<Aprendiz>{
+    return this.http.put<Aprendiz>(`${this.urlEndpoint}/${aprendiz.id}`, aprendiz, {headers: this.httpHeaders})
+  }
 }
