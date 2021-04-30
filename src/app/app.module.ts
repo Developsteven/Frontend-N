@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
@@ -12,8 +12,10 @@ import { FormComponent } from './aprendices/form.component';
 import { FormsModule } from '@angular/forms';
 import { FormularioComponent } from './usuarios/formulario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
+import { registerLocaleData } from '@angular/common';
+import LocalES from '@angular/common/locales/es';
 
-
+registerLocaleData(LocalES, 'es');
 
 const routes: Routes =[
   {path: '', redirectTo: '/sena', pathMatch: 'full'},
@@ -41,7 +43,9 @@ const routes: Routes =[
     FormsModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AprendizService],
+  providers: [AprendizService, 
+    { provide: LOCALE_ID, useValue: 'es' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

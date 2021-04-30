@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { Usuario } from './usuario';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 
@@ -19,14 +19,30 @@ export class UsuarioService {
   getUsuarios(): Observable<Usuario[]> {
     return this.http
       .get(this.urlEndpoint)
-      .pipe(map((response) => response as Usuario[]));
+      .pipe(
+      tap(response => {
+        let usuarios = response as Usuario[];
+        usuarios.forEach(usuario => {
+          console.log(usuario.nombre);
+        })
+      }),
+      map(response => {
+        let usuarios = response as Usuario[];
+        return usuarios.map(usuario => {
+          usuario.nombre = usuario.nombre.toLowerCase();
+          return usuario;
+        });
+      }),
+      tap(response => {
+        (response.forEach(usuario => {
+          console.log(usuario.nombre);
+        }))
+      }));
   }
 
   create(usuario: Usuario): Observable<Usuario> {
     return this.http
-      .post<Usuario>(this.urlEndpoint, usuario, {
-        headers: this.httpHeaders,
-      }).pipe(
+      .post<Usuario>(this.urlEndpoint, usuario).pipe(
         map((response: any) => response.usuario as Usuario),
         catchError((e) => {
           if (e.status == 400) {

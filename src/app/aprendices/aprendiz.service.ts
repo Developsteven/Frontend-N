@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
 import { APRENDICES } from './aprendices.json';
 import { Aprendiz } from './aprendiz';
-import { catchError, map } from 'rxjs/operators';
+import { catchError, map, tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 @Injectable({
@@ -18,10 +18,26 @@ export class AprendizService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   getAprendices(): Observable<Aprendiz[]>{
-    //return of(APRENDICES);
     return this.http.get(this.urlEndpoint).pipe(
-      map( (response) => response as Aprendiz[])
-    );
+      tap(response => {
+        let aprendices = response as Aprendiz[];
+        aprendices.forEach(aprendiz => {
+          console.log(aprendiz.nombre);
+        })
+      }),
+      map(response => {
+        let aprendices = response as Aprendiz[];
+        return aprendices.map(aprendiz => {
+          aprendiz.nombre = aprendiz.nombre.toLowerCase();
+          aprendiz.apellido = aprendiz.apellido.toLowerCase();
+          return aprendiz;
+        });
+      }),
+      tap(response => {
+        (response.forEach(aprendiz => {
+          console.log(aprendiz.nombre);
+        }))
+      }));
   }
 
   create(aprendiz: Aprendiz) : Observable<Aprendiz>{
