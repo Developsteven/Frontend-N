@@ -7,7 +7,11 @@
           <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/aprendices/form']">Crear Aprendiz</button>
       </div>
 
-      <table class="table table-bordered table-striped mx-auto d-block">
+      <div *ngIf="aprendices?.length == 0" class="alert alert-info">
+        No hay registros en la base de datos.
+      </div>
+
+      <table class="table table-bordered table-striped mx-auto d-block" *ngIf="aprendices?.length > 0">
           <thead>
               <tr>
                   <th>id</th>
