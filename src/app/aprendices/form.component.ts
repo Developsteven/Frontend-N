@@ -28,7 +28,7 @@ export class FormComponent implements OnInit {
       if(id){
         this.aprendizService.getAprendiz(id).subscribe( (aprendiz) => this.aprendiz = aprendiz)
       }
-    })
+    });
   }
 
   public create(): void{

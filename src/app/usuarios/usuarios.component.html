@@ -3,6 +3,9 @@
     <div class="card-body text-primary">
       <h5 class="card-title">Listado Aprendices</h5>
       
+      <div class="my-3 text-left">
+        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/usuarios/formulario']">Crear Usuario</button>
+    </div>
 
       <table class="table table-bordered table-striped mx-auto d-block">
           <thead>
@@ -12,6 +15,7 @@
                   <th>Apellido</th>
                   <th>Email</th>
                   <th>estado</th>
+                  <th>editar</th>
               </tr>
           </thead>
           <tbody>
@@ -21,7 +25,7 @@
                   <td>{{usuario.apellido}}</td>
                   <td>{{usuario.mail}}</td>
                   <td>{{usuario.estado}}</td>
-                  
+                  <td><button type="button" [routerLink]="['/usuarios/formulario', usuario.id]" class="btn btn-primary">Editar</button></td>
               </tr>
           </tbody>
       </table>

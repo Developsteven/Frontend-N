@@ -5,4 +5,5 @@ export class Usuario {
     apellido: string;
     mail: string;
     estado: boolean;
+    password:string;
 }
