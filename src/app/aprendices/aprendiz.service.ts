@@ -24,7 +24,7 @@ export class AprendizService {
   }
 
   create(aprendiz: Aprendiz) : Observable<Aprendiz>{
-    return this.http.post<Aprendiz>(this.urlEndpoint, aprendiz, {headers: this.httpHeaders})
+    return this.http.post<Aprendiz>(this.urlEndpoint, aprendiz, {headers: this.httpHeaders});
   }
 
   getAprendiz(id):Observable<Aprendiz>{
@@ -32,6 +32,6 @@ export class AprendizService {
   }
 
   update(aprendiz: Aprendiz): Observable<Aprendiz>{
-    return this.http.put<Aprendiz>(`${this.urlEndpoint}/${aprendiz.id}`, aprendiz, {headers: this.httpHeaders})
+    return this.http.put<Aprendiz>(`${this.urlEndpoint}/${aprendiz.id}`, aprendiz, {headers: this.httpHeaders});
   }
 }

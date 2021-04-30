@@ -35,8 +35,15 @@ export class FormularioComponent implements OnInit {
     this.usuarioService.create(this.usuario).subscribe(
       usuario => {
         this.router.navigate(['/usuarios'])
-        Swal.fire('Nuevo usuario', `Usuario ${usuario.nombre} creado con exito`, 'success')
+        Swal.fire('Nuevo usuario', `Usuario ${usuario.nombre} creado con exito!`, 'success')
       }
     )
+  }
+
+  update(): void{
+    this.usuarioService.update(this.usuario).subscribe( usuario => {
+      this.router.navigate(['/usuarios'])
+      Swal.fire('Usuario Actualizado', `Usuario ${usuario.nombre} actualizado con exito!`, 'success')
+    });
   }
 }

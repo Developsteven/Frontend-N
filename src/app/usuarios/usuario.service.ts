@@ -30,4 +30,10 @@ export class UsuarioService {
   getUsuario(id):Observable<Usuario>{
     return this.http.get<Usuario>(`${this.urlEndpoint}/${id}`)
   }
+
+  update(usuario: Usuario):Observable<Usuario>{
+    return this.http.put<Usuario>(`${this.urlEndpoint}/${usuario.id}`, usuario, {
+      headers: this.httpHeaders,
+    });
+  }
 }

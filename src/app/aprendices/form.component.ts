@@ -44,6 +44,6 @@ export class FormComponent implements OnInit {
     this.aprendizService.update(this.aprendiz).subscribe( aprendiz => {
       this.router.navigate(['novedades'])
       Swal.fire('Aprendiz Actualizado',`Aprendiz ${aprendiz.nombre} actuarlizado con exito!`, 'success')
-    })
+    });
   }
 }
