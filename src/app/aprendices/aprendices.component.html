@@ -1,0 +1,36 @@
+<div class="card border-primary mb-3 " > <!-- style="max-width: 50rem;" -->
+    <div class="card-header">Aprendices</div>
+    <div class="card-body text-primary">
+      <h5 class="card-title">Listado Aprendices</h5>
+      
+      <div class="my-3 text-left">
+          <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/aprendices/form']">Crear Aprendiz</button>
+      </div>
+
+      <table class="table table-bordered table-striped mx-auto d-block">
+          <thead>
+              <tr>
+                  <th>id</th>
+                  <th>Documento</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Email</th>
+                  <th>Telefono</th>
+                  <th>editar</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let aprendiz of aprendices">
+                  <td>{{aprendiz.id}}</td>
+                  <td>{{aprendiz.documento}}</td>
+                  <td>{{aprendiz.nombre}}</td>
+                  <td>{{aprendiz.apellido}}</td>
+                  <td>{{aprendiz.mail}}</td>
+                  <td>{{aprendiz.telefono}}</td>
+                  <td><button type="button" [routerLink]="['/aprendices/form', aprendiz.id]" class="btn btn-primary">Editar</button></td>
+                  
+              </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
