@@ -1,3 +1,5 @@
+import { TipoDocumento } from "./tipoDocumento";
+
 export class Aprendiz {
 
     id: number;
@@ -6,4 +8,6 @@ export class Aprendiz {
     apellido: string;
     mail: string;
     telefono: string;
+
+    tipoDocumento: TipoDocumento;
 }

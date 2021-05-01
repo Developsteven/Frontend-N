@@ -6,6 +6,7 @@ import { Aprendiz } from './aprendiz';
 import { catchError, map, tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
+import { TipoDocumento } from './tipoDocumento';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,9 +14,13 @@ export class AprendizService {
 
   private urlEndpoint: string = 'http://localhost:8089/api/aprendiz';
 
+  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+
   constructor(private http: HttpClient, private router: Router) { }
 
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+ getTipoDocumento(): Observable<TipoDocumento[]>{
+  return this.http.get<TipoDocumento[]>(this.urlEndpoint + '/tipoDocumentos');
+ }
 
   getAprendices(): Observable<Aprendiz[]>{
     return this.http.get(this.urlEndpoint).pipe(

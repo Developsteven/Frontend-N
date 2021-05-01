@@ -12,7 +12,7 @@
       <div class="form-group-row">
         <label for="nombre" class="col-form-label col-sm-2">Documento</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="aprendiz.documento" name="documento" 
+          <input type="text" class="form-control" [(ngModel)]="aprendiz.documento" name="documento"
             #documento="ngModel">
           <div class="alert alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
             <div *ngIf="documento.errors.required">
@@ -25,7 +25,7 @@
       <div class="form-group-row">
         <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="aprendiz.nombre" name="nombre"  #nombre="ngModel">
+          <input type="text" class="form-control" [(ngModel)]="aprendiz.nombre" name="nombre" #nombre="ngModel">
           <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
             <div *ngIf="nombre.errors.required">
               Nombre es requerido
@@ -40,8 +40,7 @@
       <div class="form-group-row">
         <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="aprendiz.apellido" name="apellido" 
-            #apellido="ngModel">
+          <input type="text" class="form-control" [(ngModel)]="aprendiz.apellido" name="apellido" #apellido="ngModel">
           <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
             <div *ngIf="apellido.errors.required">
               Apellido es requerido
@@ -53,7 +52,7 @@
       <div class="form-group-row">
         <label for="email" class="col-form-label col-sm-2">Email</label>
         <div class="col-sm-6">
-          <input type="email" class="form-control" [(ngModel)]="aprendiz.mail" name="email"  #mail='ngModel'>
+          <input type="email" class="form-control" [(ngModel)]="aprendiz.mail" name="email" #mail='ngModel'>
           <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
             <div *ngIf="mail.errors.required">
               Email es requerido
@@ -66,14 +65,26 @@
       </div>
 
       <div class="form-group-row">
-        <label for="email" class="col-form-label col-sm-2">Telefono</label>
+        <label for="telefono" class="col-form-label col-sm-2">Telefono</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" [(ngModel)]="aprendiz.telefono" name="telefono"  #telefono='ngModel'>
+          <input type="text" class="form-control" [(ngModel)]="aprendiz.telefono" name="telefono" #telefono='ngModel'>
           <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
             <div *ngIf="telefono.errors.required">
               Telefono es requerido
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="form-group-row">
+        <label for="tipoDocumento" class="col-form-label col-sm-2">Tipo Documento</label>
+        <div class="col-sm-6">
+          <select [compareWith]="compararTipoDocumento" class="form-control" [(ngModel)]="aprendiz.tipoDocumento"
+            name="tipoDocumento" style="width: 500px;">
+            <option [ngValue]="undefined">--- seleccionar un tipo documento ---</option>
+            <option *ngFor="let tipoDocumento of tipoDocumentos" [ngValue]="tipoDocumento">{{tipoDocumento.nombre}}
+            </option>
+          </select>
         </div>
       </div>
 

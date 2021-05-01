@@ -5,6 +5,7 @@ import { Usuario } from './usuario';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
+import { Rol } from './rol';
 
 @Injectable({
   providedIn: 'root',
@@ -12,9 +13,13 @@ import Swal from 'sweetalert2';
 export class UsuarioService {
   private urlEndpoint: string = 'http://localhost:8089/api/usuario';
 
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+
   constructor(private http: HttpClient, private router: Router) {}
 
-  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
+  getRol():Observable<Rol[]>{
+    return this.http.get<Rol[]>(this.urlEndpoint + '/rol');
+  }
 
   getUsuarios(): Observable<Usuario[]> {
     return this.http
