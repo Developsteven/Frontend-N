@@ -21,27 +21,27 @@ export class UsuarioService {
     return this.http.get<Rol[]>(this.urlEndpoint + '/rol');
   }
 
-  getUsuarios(): Observable<Usuario[]> {
+  getUsuarios(page: number): Observable<any> {
     return this.http
-      .get(this.urlEndpoint)
+      .get(this.urlEndpoint + '/page/' + page)
       .pipe(
-      tap(response => {
-        let usuarios = response as Usuario[];
-        usuarios.forEach(usuario => {
+      tap((response: any) => {
+
+        (response.content as Usuario[]).forEach((usuario) => {
           console.log(usuario.nombre);
         })
       }),
       map(response => {
-        let usuarios = response as Usuario[];
-        return usuarios.map(usuario => {
+        (response.content as Usuario[]).map((usuario) => {
           usuario.nombre = usuario.nombre.toLowerCase();
           return usuario;
         });
+        return response;
       }),
       tap(response => {
-        (response.forEach(usuario => {
+        (response.content as Usuario[]).forEach((usuario)  => {
           console.log(usuario.nombre);
-        }))
+        });
       }));
   }
 

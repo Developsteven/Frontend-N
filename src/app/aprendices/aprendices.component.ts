@@ -14,9 +14,12 @@ export class AprendicesComponent implements OnInit {
   constructor(private aprendizService: AprendizService) {}
 
   ngOnInit() {
-    this.aprendizService
-      .getAprendices()
-      .pipe(tap((aprendices) => (this.aprendices = aprendices)))
-      .subscribe();
+    let page = 0;
+    this.aprendizService.getAprendices(page).pipe(tap(response => {
+      (response.content as Aprendiz[]).forEach(aprendiz => {
+        console.log(aprendiz.nombre);
+      });
+    })
+    ).subscribe(response => this.aprendices = response.content as Aprendiz[]);
   }
 }

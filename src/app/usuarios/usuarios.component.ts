@@ -14,9 +14,14 @@ export class UsuariosComponent implements OnInit {
   constructor(private usuarioService: UsuarioService) {}
 
   ngOnInit(): void {
+    let page = 0;
     this.usuarioService
-      .getUsuarios()
-      .pipe(tap((usuarios) => (this.usuarios = usuarios)))
-      .subscribe();
+      .getUsuarios(page)
+      .pipe(tap(response =>{
+        (response.content as Usuario[]).forEach(usuario => {
+          console.log(usuario.nombre);
+        });
+      })
+      ).subscribe(response => this.usuarios = response.content as Usuario[]);
   }
 }

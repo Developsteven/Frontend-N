@@ -22,26 +22,26 @@ export class AprendizService {
   return this.http.get<TipoDocumento[]>(this.urlEndpoint + '/tipoDocumentos');
  }
 
-  getAprendices(): Observable<Aprendiz[]>{
-    return this.http.get(this.urlEndpoint).pipe(
-      tap(response => {
-        let aprendices = response as Aprendiz[];
-        aprendices.forEach(aprendiz => {
+  getAprendices(page: number): Observable<any>{
+    return this.http.get(this.urlEndpoint + '/page/' + page).pipe(
+      tap((response: any) => {
+        
+        (response.content as Aprendiz[]).forEach((aprendiz) => {
           console.log(aprendiz.nombre);
         })
       }),
-      map(response => {
-        let aprendices = response as Aprendiz[];
-        return aprendices.map(aprendiz => {
+      map((response: any) => {
+        (response.content as Aprendiz[]).map((aprendiz) => {
           aprendiz.nombre = aprendiz.nombre.toLowerCase();
           aprendiz.apellido = aprendiz.apellido.toLowerCase();
           return aprendiz;
         });
+        return response;
       }),
-      tap(response => {
-        (response.forEach(aprendiz => {
+      tap((response) => {
+        (response.content as Aprendiz[]).forEach((aprendiz) => {
           console.log(aprendiz.nombre);
-        }))
+        });
       }));
   }
 
