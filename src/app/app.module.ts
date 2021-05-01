@@ -17,6 +17,7 @@ import LocalES from '@angular/common/locales/es';
 import { PaginatorComponent } from './paginator/paginator.component';
 import { PaginadorrComponent } from './paginator/paginadorr.component';
 import { DetalleComponent } from './aprendices/detalle/detalle.component';
+import { DetalleUserComponent } from './usuarios/detalleUser/detalleUser.component';
 
 registerLocaleData(LocalES, 'es');
 
@@ -44,6 +45,7 @@ const routes: Routes =[
     PaginatorComponent,
     PaginadorrComponent,
     DetalleComponent,
+    DetalleUserComponent,
   ],
   imports: [
     BrowserModule,
