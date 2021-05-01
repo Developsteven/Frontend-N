@@ -1,3 +1,5 @@
+<detalle-user *ngIf="usuarioSelecionado" [usuario]="usuarioSelecionado"></detalle-user>
+
 <div class="card border-primary mb-3 col-auto" > <!-- style="max-width: 18rem;" -->
     <div class="card-header">Usuarios</div>
     <div class="card-body text-primary">
@@ -24,7 +26,7 @@
           </thead>
           <tbody>
               <tr *ngFor="let usuario of usuarios">
-                  <td>{{usuario.id}}</td>
+                  <td><button (click)="abrirModal(usuario)" class="btn btn-success">{{usuario.id}}</button></td>
                   <td>{{usuario.nombre}}</td>
                   <td>{{usuario.apellido}}</td>
                   <td>{{usuario.mail}}</td>

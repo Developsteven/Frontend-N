@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Aprendiz } from './aprendiz';
 import { AprendizService } from './aprendiz.service';
+import { ModalService } from './detalle/modal.service';
 
 @Component({
   selector: 'app-aprendices',
@@ -12,9 +13,11 @@ import { AprendizService } from './aprendiz.service';
 export class AprendicesComponent implements OnInit {
   aprendices: Aprendiz[];
   paginador: any;
+  aprendizSeleccionado: Aprendiz;
 
   constructor(private aprendizService: AprendizService,
-    private activatedRoute: ActivatedRoute) {}
+    private activatedRoute: ActivatedRoute,
+    private modalService: ModalService) {}
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params =>{
@@ -33,5 +36,10 @@ export class AprendicesComponent implements OnInit {
       this.paginador = response;
     });
   });
+  }
+
+  abrirModal(aprendiz: Aprendiz){
+    this.aprendizSeleccionado = aprendiz;
+    this.modalService.abrirModal();
   }
 }

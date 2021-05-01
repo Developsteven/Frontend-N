@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { ModalUserService } from './detalleUser/modalUser.service';
 import { Usuario } from './usuario';
 import { UsuarioService } from './usuario.service';
 
@@ -12,10 +13,12 @@ import { UsuarioService } from './usuario.service';
 export class UsuariosComponent implements OnInit {
   usuarios: Usuario[];
   paginar: any;
+  usuarioSelecionado: Usuario;
 
   constructor(
     private usuarioService: UsuarioService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private modalUserService: ModalUserService
   ) {}
 
   ngOnInit(): void {
@@ -40,5 +43,10 @@ export class UsuariosComponent implements OnInit {
           this.paginar = response;
         });
     });
+  }
+
+  abrirModal(usuario: Usuario){
+    this.usuarioSelecionado = usuario;
+    this.modalUserService.abrirModal();
   }
 }

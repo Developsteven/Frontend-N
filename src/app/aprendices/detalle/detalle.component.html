@@ -1,1 +1,41 @@
-<p>detalle works!</p>
+<div class="abrir-modal animacion fadeIn" *ngIf="modalService.modal">
+  <div class="modal" tabindex="-1" style="display: block;">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ titulo}}</h5>
+          <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal"
+            aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <div class="row">
+              <div class="col-sm">
+
+                <ul *ngIf="aprendiz" class="list-group text-dark mb-3">
+                  <li class="list-group-item active">{{aprendiz.nombre}}</li>
+                  <li class="list-group-item">{{aprendiz.apellido}}</li>
+                  <li class="list-group-item">{{aprendiz.documento}}</li>
+                  <li class="list-group-item">{{aprendiz.mail}}</li>
+                  <li class="list-group-item">{{aprendiz.telefono}}</li>
+                  <li class="list-group-item">{{aprendiz.tipoDocumento}}</li>
+                </ul>
+
+              </div>
+            </div>
+
+            <div class="row">
+              <button type="button" class="btn btn-success btn-sm">crear
+                Novedad</button>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

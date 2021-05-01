@@ -1,1 +1,33 @@
-<p>detalle-user works!</p>
+<div class="abrir-modal animacion fadeIn" *ngIf="modalUserService.modalUser">
+    <div class="modal" tabindex="-1" style="display: block;">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">{{ titulo}}</h5>
+            <button (click)="cerrarModal()" type="button" class="btn-close" data-bs-dismiss="modal"
+              aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="container">
+              <div class="row">
+                <div class="col-sm">
+  
+                  <ul *ngIf="usuario" class="list-group text-dark mb-3">
+                    <li class="list-group-item active"><h6>Nombre: </h6>{{usuario.nombre}}</li>
+                    <li class="list-group-item"><h6>Apellido: </h6>{{usuario.apellido}}</li>
+                    <li class="list-group-item"><h6>Estado: </h6>{{usuario.estado}}</li>
+                    <li class="list-group-item"><h6>Rol: </h6>{{usuario.rol}}</li>
+                    <li class="list-group-item"><h6>Email: </h6>{{usuario.mail}}</li>
+                  </ul>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

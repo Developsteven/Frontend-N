@@ -9,6 +9,19 @@
   <div class="card-body">
 
     <form #aprendizForm="ngForm">
+
+      <div class="form-group-row">
+        <label for="tipoDocumento" class="col-form-label col-sm-2">Tipo Documento</label>
+        <div class="col-sm-6">
+          <select [compareWith]="compararTipoDocumento" class="form-control" [(ngModel)]="aprendiz.tipoDocumento"
+            name="tipoDocumento" style="width: 500px;">
+            <option [ngValue]="undefined">--- seleccionar un tipo documento ---</option>
+            <option *ngFor="let tipoDocumento of tipoDocumentos" [ngValue]="tipoDocumento">{{tipoDocumento.nombre}}
+            </option>
+          </select>
+        </div>
+      </div>
+      
       <div class="form-group-row">
         <label for="nombre" class="col-form-label col-sm-2">Documento</label>
         <div class="col-sm-6">
@@ -76,17 +89,7 @@
         </div>
       </div>
 
-      <div class="form-group-row">
-        <label for="tipoDocumento" class="col-form-label col-sm-2">Tipo Documento</label>
-        <div class="col-sm-6">
-          <select [compareWith]="compararTipoDocumento" class="form-control" [(ngModel)]="aprendiz.tipoDocumento"
-            name="tipoDocumento" style="width: 500px;">
-            <option [ngValue]="undefined">--- seleccionar un tipo documento ---</option>
-            <option *ngFor="let tipoDocumento of tipoDocumentos" [ngValue]="tipoDocumento">{{tipoDocumento.nombre}}
-            </option>
-          </select>
-        </div>
-      </div>
+      
 
       <div class="form-group row mt-4">
         <div class="col-sm-6">

@@ -1,3 +1,5 @@
+<detalle-aprendiz *ngIf="aprendizSeleccionado" [aprendiz]="aprendizSeleccionado"></detalle-aprendiz>
+
 <div class="card border-primary mb-3 " > <!-- style="max-width: 50rem;" -->
     <div class="card-header">Aprendices</div>
     <div class="card-body text-primary">
@@ -14,7 +16,7 @@
       <table class="table table-bordered table-striped mx-auto d-block" *ngIf="aprendices?.length > 0">
           <thead>
               <tr>
-                  <th>id</th>
+                  <th> id</th>
                   <th>Documento</th>
                   <th>Nombre</th>
                   <th>Apellido</th>
@@ -25,7 +27,7 @@
           </thead>
           <tbody>
               <tr *ngFor="let aprendiz of aprendices">
-                  <td>{{aprendiz.id}}</td>
+                  <td><button (click)="abrirModal(aprendiz)" class="btn btn-success">{{aprendiz.id}}</button></td>
                   <td>{{aprendiz.documento}}</td>
                   <td>{{aprendiz.nombre}}</td>
                   <td>{{aprendiz.apellido}}</td>
