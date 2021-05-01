@@ -31,7 +31,7 @@ export class UsuarioService {
           console.log(usuario.nombre);
         })
       }),
-      map(response => {
+      map((response: any) => {
         (response.content as Usuario[]).map((usuario) => {
           usuario.nombre = usuario.nombre.toLowerCase();
           return usuario;

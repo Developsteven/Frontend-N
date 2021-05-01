@@ -14,13 +14,17 @@ import { FormularioComponent } from './usuarios/formulario.component';
 import { UsuariosComponent } from './usuarios/usuarios.component';
 import { registerLocaleData } from '@angular/common';
 import LocalES from '@angular/common/locales/es';
+import { PaginatorComponent } from './paginator/paginator.component';
+import { PaginadorrComponent } from './paginator/paginadorr.component';
 
 registerLocaleData(LocalES, 'es');
 
 const routes: Routes =[
   {path: '', redirectTo: '/sena', pathMatch: 'full'},
   {path: 'novedades', component: AprendicesComponent},
+  {path: 'novedades/page/:page', component: AprendicesComponent},
   {path: 'usuarios', component: UsuariosComponent},
+  {path: 'usuarios/page/:page', component: UsuariosComponent},
   {path: 'aprendices/form', component: FormComponent},
   {path: 'aprendices/form/:id', component: FormComponent},
   {path: 'usuarios/formulario', component: FormularioComponent},
@@ -36,6 +40,8 @@ const routes: Routes =[
     FormComponent,
     UsuariosComponent,
     FormularioComponent,
+    PaginatorComponent,
+    PaginadorrComponent,
   ],
   imports: [
     BrowserModule,
