@@ -7,28 +7,36 @@ import { catchError, map, tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { TipoDocumento } from './tipoDocumento';
+import { Ficha } from './ficha';
+import { Trimestre } from './trimestre';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AprendizService {
-
   private urlEndpoint: string = 'http://localhost:8089/api/aprendiz';
 
-  private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
- getTipoDocumento(): Observable<TipoDocumento[]>{
-  return this.http.get<TipoDocumento[]>(this.urlEndpoint + '/tipoDocumentos');
- }
+  getTipoDocumento(): Observable<TipoDocumento[]> {
+    return this.http.get<TipoDocumento[]>(this.urlEndpoint + '/tipoDocumentos');
+  }
 
-  getAprendices(page: number): Observable<any>{
+  getFichas(): Observable<Ficha[]> {
+    return this.http.get<Ficha[]>(this.urlEndpoint + '/fichas');
+  }
+
+  getTrimestre(): Observable<Trimestre[]>{
+    return this.http.get<Trimestre[]>(this.urlEndpoint + '/trimestres');
+  }
+
+  getAprendices(page: number): Observable<any> {
     return this.http.get(this.urlEndpoint + '/page/' + page).pipe(
       tap((response: any) => {
-        
         (response.content as Aprendiz[]).forEach((aprendiz) => {
           console.log(aprendiz.nombre);
-        })
+        });
       }),
       map((response: any) => {
         (response.content as Aprendiz[]).map((aprendiz) => {
@@ -42,45 +50,51 @@ export class AprendizService {
         (response.content as Aprendiz[]).forEach((aprendiz) => {
           console.log(aprendiz.nombre);
         });
-      }));
+      })
+    );
   }
 
-  create(aprendiz: Aprendiz) : Observable<Aprendiz>{
+  create(aprendiz: Aprendiz): Observable<Aprendiz> {
     return this.http.post<Aprendiz>(this.urlEndpoint, aprendiz).pipe(
       map((response: any) => response.aprendiz as Aprendiz),
       catchError((e) => {
         if (e.status == 400) {
           return throwError(e);
         }
-        if(e.error.mensaje){
-        console.error(e.error.mensaje);
-      }
+        if (e.error.mensaje) {
+          console.error(e.error.mensaje);
+        }
         return throwError(e);
-      }));
+      })
+    );
   }
 
-  getAprendiz(id):Observable<Aprendiz>{
+  getAprendiz(id): Observable<Aprendiz> {
     return this.http.get<Aprendiz>(`${this.urlEndpoint}/${id}`).pipe(
-      catchError(e => {
+      catchError((e) => {
         if (e.status != 401 && e.error.mensaje) {
           this.router.navigate(['/aprendices']);
           console.error(e.error.mensaje);
         }
         return throwError(e);
-      }));
+      })
+    );
   }
 
-  update(aprendiz: Aprendiz): Observable<Aprendiz>{
-    return this.http.put<Aprendiz>(`${this.urlEndpoint}/${aprendiz.id}`, aprendiz).pipe(
-      map((response: any) => response.aprendiz as Aprendiz),
-      catchError((e) => {
-        if (e.status == 400) {
+  update(aprendiz: Aprendiz): Observable<Aprendiz> {
+    return this.http
+      .put<Aprendiz>(`${this.urlEndpoint}/${aprendiz.id}`, aprendiz)
+      .pipe(
+        map((response: any) => response.aprendiz as Aprendiz),
+        catchError((e) => {
+          if (e.status == 400) {
+            return throwError(e);
+          }
+          if (e.error.mensaje) {
+            console.error(e.error.mensaje);
+          }
           return throwError(e);
-        }
-        if(e.error.mensaje){
-        console.error(e.error.mensaje);
-      }
-        return throwError(e);
-      }));
+        })
+      );
   }
 }

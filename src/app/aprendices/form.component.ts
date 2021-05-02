@@ -3,7 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Aprendiz } from './aprendiz';
 import { AprendizService } from './aprendiz.service';
+import { Ficha } from './ficha';
 import { TipoDocumento } from './tipoDocumento';
+import { Trimestre } from './trimestre';
 
 @Component({
   selector: 'app-form',
@@ -15,6 +17,8 @@ export class FormComponent implements OnInit {
   public titulo: string = 'Crear Cliente';
   public errores: string[];
   tipoDocumentos: TipoDocumento[];
+  fichas: Ficha[];
+  trimestres: Trimestre[];
 
   constructor(
     private aprendizService: AprendizService,
@@ -25,6 +29,8 @@ export class FormComponent implements OnInit {
   ngOnInit(){
     this.caragrAprendiz()
     this.aprendizService.getTipoDocumento().subscribe(tipoDocumentos => this.tipoDocumentos = tipoDocumentos);
+    this.aprendizService.getFichas().subscribe(fichas=> this.fichas = fichas);
+    this.aprendizService.getTrimestre().subscribe(trimestres => this.trimestres = trimestres);
   }
 
   caragrAprendiz(): void {
@@ -75,6 +81,21 @@ export class FormComponent implements OnInit {
   }
 
   compararTipoDocumento(o1:TipoDocumento, o2:TipoDocumento): boolean {
+    if(o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return o1 === null || o2 ===null || o1 === undefined || o2 ===undefined? false: o1.id===o2.id;
+  }
+
+  compararFicha(o1:Ficha, o2:Ficha): boolean {
+    if(o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return o1 === null || o2 ===null || o1 === undefined || o2 ===undefined? false: o1.id===o2.id;
+  }
+
+
+  compararTrimestre(o1:Trimestre, o2:Trimestre): boolean {
     if(o1 === undefined && o2 === undefined){
       return true;
     }

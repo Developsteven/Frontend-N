@@ -1,4 +1,6 @@
+import { Ficha } from "./ficha";
 import { TipoDocumento } from "./tipoDocumento";
+import { Trimestre } from "./trimestre";
 
 export class Aprendiz {
 
@@ -10,4 +12,6 @@ export class Aprendiz {
     telefono: string;
 
     tipoDocumento: TipoDocumento;
+    ficha: Ficha;
+    trimestre: Trimestre;
 }

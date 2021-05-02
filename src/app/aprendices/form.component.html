@@ -89,6 +89,29 @@
         </div>
       </div>
 
+      <div class="form-group-row">
+        <label for="ficha" class="col-form-label col-sm-2">Ficha</label>
+        <div class="col-sm-6">
+          <select [compareWith]="compararFicha" class="form-control" [(ngModel)]="aprendiz.ficha"
+            name="ficha" style="width: 500px;">
+            <option [ngValue]="undefined">--- seleccionar una ficha ---</option>
+            <option *ngFor="let ficha of fichas" [ngValue]="ficha">{{ficha.nombre}}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group-row">
+        <label for="trimestre" class="col-form-label col-sm-2">Trimestre</label>
+        <div class="col-sm-6">
+          <select [compareWith]="compararTrimestre" class="form-control" [(ngModel)]="aprendiz.trimestre"
+            name="trimestre" style="width: 500px;">
+            <option [ngValue]="undefined">--- seleccionar un trimestre ---</option>
+            <option *ngFor="let trimestre of trimestres" [ngValue]="trimestre">{{trimestre.nombre}}
+            </option>
+          </select>
+        </div>
+      </div>
       
 
       <div class="form-group row mt-4">
