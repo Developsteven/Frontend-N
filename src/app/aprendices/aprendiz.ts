@@ -15,5 +15,5 @@ export class Aprendiz {
     tipoDocumento: TipoDocumento;
     ficha: Ficha;
     trimestre: Trimestre;
-    novedad: Novedad[] = [];
+    novedades: Novedad[] = [];
 }

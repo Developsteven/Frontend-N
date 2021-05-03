@@ -4,7 +4,7 @@ export class Novedad {
 
     id: number;
     titulo: string;
-    descripccion: string;
+    descripcion: string;
     fecha: string;
 
     aprendiz: Aprendiz;

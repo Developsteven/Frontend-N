@@ -25,14 +25,15 @@ registerLocaleData(LocalES, 'es');
 
 const routes: Routes =[
   {path: '', redirectTo: '/sena', pathMatch: 'full'},
-  {path: 'novedades', component: AprendicesComponent},
-  {path: 'novedades/page/:page', component: AprendicesComponent},
+  {path: 'aprendices', component: AprendicesComponent},
+  {path: 'aprendices/page/:page', component: AprendicesComponent},
   {path: 'usuarios', component: UsuariosComponent},
   {path: 'usuarios/page/:page', component: UsuariosComponent},
   {path: 'aprendices/form', component: FormComponent},
   {path: 'aprendices/form/:id', component: FormComponent},
   {path: 'usuarios/formulario', component: FormularioComponent},
   {path: 'usuarios/formulario/:id', component: FormularioComponent},
+  {path: 'novedades/:id', component: DetalleNovedadComponent},
 ];
 
 @NgModule({

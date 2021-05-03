@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Novedad } from './novedad';
+import { NovedadService } from './novedad.service';
 
 @Component({
   selector: 'app-detalle-novedad',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetalleNovedadComponent implements OnInit {
 
-  constructor() { }
+novedad: Novedad;
+titulo: string = 'Novedad';
+
+  constructor(private novedadService: NovedadService, 
+    private activatedRouter: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.activatedRouter.paramMap.subscribe(params => {
+      let id = +params.get('id');
+      this.novedadService.getNovedad(id).subscribe(novedad => this.novedad = novedad);
+    })
   }
 
 }
