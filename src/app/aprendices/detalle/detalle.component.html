@@ -29,7 +29,38 @@
                 Novedad</button>
             </div>
 
+            <div class="row">
+              <div class="alert alert-info my-4" *ngIf="aprendiz.novedades.length==0">
+                No hay Novedad para el aprendiz {{aprendiz.nombre}} {{aprendiz.apellido}}
+              </div>
 
+              <table class="table table-bordered table-striped my-4" *ngIf="aprendiz.novedades.length>0">
+
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>titulo</th>
+                    <th>descripcion</th>
+                    <th>fecha</th>
+                    <th>detalle</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr *ngFor="let novedad of aprendiz.novedades">
+                    <td>{{novedad.id}}</td>
+                    <td>{{novedad.titulo}}</td>
+                    <td>{{novedad.descripcion}}</td>
+                    <td>{{novedad.fecha}}</td>
+                    <td>ver</td>
+<!--                     <td><button class="btn btn-primary btn-sm" type="button"
+                        [routerLink]="['/facturas', factura.id]">Ver</button></td></td> -->
+                    
+                  </tr>
+                </tbody>
+
+              </table>
+            </div>
           </div>
         </div>
         <div class="modal-footer">

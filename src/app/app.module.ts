@@ -18,6 +18,8 @@ import { PaginatorComponent } from './paginator/paginator.component';
 import { PaginadorrComponent } from './paginator/paginadorr.component';
 import { DetalleComponent } from './aprendices/detalle/detalle.component';
 import { DetalleUserComponent } from './usuarios/detalleUser/detalleUser.component';
+import { DetalleNovedadComponent } from './novedades/detalle-novedad.component';
+
 
 registerLocaleData(LocalES, 'es');
 
@@ -46,6 +48,7 @@ const routes: Routes =[
     PaginadorrComponent,
     DetalleComponent,
     DetalleUserComponent,
+    DetalleNovedadComponent,
   ],
   imports: [
     BrowserModule,

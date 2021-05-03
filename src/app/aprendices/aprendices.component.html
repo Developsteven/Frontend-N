@@ -22,17 +22,19 @@
                   <th>Apellido</th>
                   <th>Email</th>
                   <th>Telefono</th>
+                  <th>Crear Novedad</th>
                   <th>editar</th>
               </tr>
           </thead>
           <tbody>
               <tr *ngFor="let aprendiz of aprendices">
-                  <td><button (click)="abrirModal(aprendiz)" class="btn btn-success">{{aprendiz.id}}</button></td>
+                  <td><button (click)="abrirModal(aprendiz)" class="btn btn-success">ver</button></td>
                   <td>{{aprendiz.documento}}</td>
                   <td>{{aprendiz.nombre}}</td>
                   <td>{{aprendiz.apellido}}</td>
                   <td>{{aprendiz.mail}}</td>
                   <td>{{aprendiz.telefono}}</td>
+                  <td><button type="button" class="btn btn-success">Crear Novedad</button></td>
                   <td><button type="button" [routerLink]="['/aprendices/form', aprendiz.id]" class="btn btn-primary">Editar</button></td>
                   
               </tr>
