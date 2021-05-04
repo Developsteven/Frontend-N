@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { AprendizService } from '../aprendices/aprendiz.service';
 import { Novedad } from './novedad';
 import { NovedadService } from './novedad.service';
@@ -19,6 +20,7 @@ export class NovedadesComponent implements OnInit {
 
   constructor(private aprendizService: AprendizService,
     private activateRoute: ActivatedRoute,
+    private router: Router,
     private novedadService: NovedadService) { }
 
   ngOnInit(): void {
@@ -27,6 +29,13 @@ export class NovedadesComponent implements OnInit {
       this.aprendizService.getAprendiz(aprendizId).subscribe(aprendiz => this.novedad.aprendiz = aprendiz);
     })
     this.novedadService.getTipoNovedad().subscribe(tipoNovedades => this.tipoNovedades = tipoNovedades);
+  }
+
+  create(): void{
+    this.novedadService.create(this.novedad).subscribe(novedad => {
+      Swal.fire('Novedad Nueva',`Novedad ${novedad.titulo} creada con exito!`, 'success');
+      this.router.navigate(['/aprendices']);
+    });
   }
 
   compararTipoNovedad(o1:TipoNovedad, o2:TipoNovedad): boolean {

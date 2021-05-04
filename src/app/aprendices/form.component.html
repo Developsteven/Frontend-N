@@ -4,9 +4,12 @@
   </li>
 </ul>
 
-<div class="card bg-light text-dark">
+<div class="card bg-light-gray text-dark">
   <div class="card-header">{{ titulo}}</div>
   <div class="card-body">
+
+    <div class="m-0 row justify-content-center align-items-center">
+      <div class="col-auto">
 
     <form #aprendizForm="ngForm">
 
@@ -24,7 +27,7 @@
       
       <div class="form-group-row">
         <label for="nombre" class="col-sm-2 col-form-label">Documento</label>
-        <div class="col-sm-4">
+        <div class="col">
           <input type="text" class="form-control" [(ngModel)]="aprendiz.documento" name="documento"
             #documento="ngModel">
           <div class="alert alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
@@ -37,7 +40,7 @@
 
       <div class="form-group-row">
         <label for="nombre" class="col-form-label col-sm">Nombre</label>
-        <div class="col-sm-4">
+        <div class="col">
           <input type="text" class="form-control" [(ngModel)]="aprendiz.nombre" name="nombre" #nombre="ngModel">
           <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
             <div *ngIf="nombre.errors.required">
@@ -52,7 +55,7 @@
 
       <div class="form-group-row">
         <label for="apellido" class="col-form-label col-sm">Apellido</label>
-        <div class="col-sm-4">
+        <div class="col">
           <input type="text" class="form-control" [(ngModel)]="aprendiz.apellido" name="apellido" #apellido="ngModel">
           <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
             <div *ngIf="apellido.errors.required">
@@ -64,7 +67,7 @@
 
       <div class="form-group-row">
         <label for="email" class="col-form-label col-sm">Email</label>
-        <div class="col-sm-4">
+        <div class="col">
           <input type="email" class="form-control" [(ngModel)]="aprendiz.mail" name="email" #mail='ngModel'>
           <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
             <div *ngIf="mail.errors.required">
@@ -79,7 +82,7 @@
 
       <div class="form-group-row">
         <label for="telefono" class="col-form-label col-sm">Telefono</label>
-        <div class="col-sm-4">
+        <div class="col">
           <input type="text" class="form-control" [(ngModel)]="aprendiz.telefono" name="telefono" #telefono='ngModel'>
           <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
             <div *ngIf="telefono.errors.required">
@@ -127,6 +130,8 @@
         </div>
       </div>
     </form>
+  </div>
+</div>
 
   </div>
 

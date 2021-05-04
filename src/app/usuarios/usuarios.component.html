@@ -1,40 +1,47 @@
 <detalle-user *ngIf="usuarioSelecionado" [usuario]="usuarioSelecionado"></detalle-user>
 
-<div class="card border-primary mb-3 col-auto" > <!-- style="max-width: 18rem;" -->
-    <div class="card-header">Usuarios</div>
-    <div class="card-body text-primary">
-      <h5 class="card-title">Listado Usuarios</h5>
-      
-      <div class="my-3 text-left">
-        <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/usuarios/formulario']">Crear Usuario</button>
-    </div>
+<div class="m-0 row justify-content-center align-items-center">
+  <div class="col-auto">
+    <div class="card mb-3 col-auto">
+      <!-- style="max-width: 18rem;" -->
+      <div class="card-header">Usuarios</div>
+      <div class="card-body text-primary">
+        <h5 class="card-title">Listado Usuarios</h5>
 
-    <div *ngIf="usuarios?.length == 0" class="alert alert-info">
-        No hay registros en la base de datos.
-      </div>
+        <div class="my-3 text-left">
+          <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/usuarios/formulario']">Crear
+            Usuario</button>
+        </div>
 
-      <table class="table table-bordered table-striped mx-auto d-block" *ngIf="usuarios?.length > 0">
+        <div *ngIf="usuarios?.length == 0" class="alert alert-info">
+          No hay registros en la base de datos.
+        </div>
+
+        <table class="table table-bordered table-striped mx-auto d-block" *ngIf="usuarios?.length > 0">
           <thead>
-              <tr>
-                  <th></th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Email</th>
-                  <th>estado</th>
-                  <th>editar</th>
-              </tr>
+            <tr>
+              <th></th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>estado</th>
+              <th>editar</th>
+            </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let usuario of usuarios">
-                  <td><button (click)="abrirModal(usuario)" class="btn btn-success">ver</button></td>
-                  <td>{{usuario.nombre}}</td>
-                  <td>{{usuario.apellido}}</td>
-                  <td>{{usuario.mail}}</td>
-                  <td>{{usuario.estado}}</td>
-                  <td><button type="button" [routerLink]="['/usuarios/formulario', usuario.id]" class="btn btn-primary">Editar</button></td>
-              </tr>
+            <tr *ngFor="let usuario of usuarios">
+              <td><button (click)="abrirModal(usuario)" class="btn btn-success">ver</button></td>
+              <td>{{usuario.nombre}}</td>
+              <td>{{usuario.apellido}}</td>
+              <td>{{usuario.mail}}</td>
+              <td>{{usuario.estado}}</td>
+              <td><button type="button" [routerLink]="['/usuarios/formulario', usuario.id]"
+                  class="btn btn-primary">Editar</button></td>
+            </tr>
           </tbody>
-      </table>
-      <paginadorr-nav *ngIf="paginar" [paginar]= "paginar"></paginadorr-nav>
+        </table>
+        <paginadorr-nav *ngIf="paginar" [paginar]="paginar"></paginadorr-nav>
+      </div>
     </div>
   </div>
+</div>

@@ -1,45 +1,74 @@
 <detalle-aprendiz *ngIf="aprendizSeleccionado" [aprendiz]="aprendizSeleccionado"></detalle-aprendiz>
 
-<div class="card border-primary mb-3 " > <!-- style="max-width: 50rem;" -->
-    <div class="card-header">Aprendices</div>
-    <div class="card-body text-primary">
-      <h5 class="card-title">Listado Aprendices</h5>
-      
-      <div class="my-3 text-left">
-          <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/aprendices/form']">Crear Aprendiz</button>
-      </div>
+<div class="m-0 row justify-content-center align-items-center">
+  <div class="col-auto">
+    <div class="card mb-3 ">
+      <!-- style="max-width: 50rem;" -->
+      <div class="card-header">Aprendices</div>
+      <div class="card-body text-primary">
+        <h5 class="card-title">Listado Aprendices</h5>
 
-      <div *ngIf="aprendices?.length == 0" class="alert alert-info">
-        No hay registros en la base de datos.
-      </div>
+        <div class="my-3 text-left">
+          <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/aprendices/form']">Crear
+            Aprendiz</button>
+        </div>
 
-      <table class="table table-bordered table-striped mx-auto d-block" *ngIf="aprendices?.length > 0">
+        <div *ngIf="aprendices?.length == 0" class="alert alert-info">
+          No hay registros en la base de datos.
+        </div>
+
+
+        <div class="m-0 row justify-content-center align-items-center">
+          <div class="col-auto">
+            <form class="row g-3">
+              <div class="col-auto">
+                <label class="visually-hidden">Documento</label>
+                <input type="text" readonly class="form-control-plaintext" value="Numero de Documento">
+              </div>
+              <div class="col-auto">
+                <label class="visually-hidden">Password</label>
+                <input type="text" class="form-control" id="inputPassword2" placeholder="Documento">
+              </div>
+              <div class="col-auto">
+                <button type="submit" class="btn btn-success mb-3">Buscar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+
+
+        <table class="table table-bordered table-striped mx-auto d-block" *ngIf="aprendices?.length > 0">
           <thead>
-              <tr>
-                  <th></th>
-                  <th>Documento</th>
-                  <th>Nombre</th>
-                  <th>Apellido</th>
-                  <th>Email</th>
-                  <th>Telefono</th>
-                  <th>Crear Novedad</th>
-                  <th>editar</th>
-              </tr>
+            <tr>
+              <th></th>
+              <th>Documento</th>
+              <th>Nombre</th>
+              <th>Apellido</th>
+              <th>Email</th>
+              <th>Telefono</th>
+              <th>Crear Novedad</th>
+              <th>editar</th>
+            </tr>
           </thead>
           <tbody>
-              <tr *ngFor="let aprendiz of aprendices">
-                  <td><button (click)="abrirModal(aprendiz)" class="btn btn-success">ver</button></td>
-                  <td>{{aprendiz.documento}}</td>
-                  <td>{{aprendiz.nombre}}</td>
-                  <td>{{aprendiz.apellido}}</td>
-                  <td>{{aprendiz.mail}}</td>
-                  <td>{{aprendiz.telefono}}</td>
-                  <td><button type="button" [routerLink]="['/novedades/form', aprendiz.id]" class="btn btn-success">Crear Novedad</button></td>
-                  <td><button type="button" [routerLink]="['/aprendices/form', aprendiz.id]" class="btn btn-primary">Editar</button></td>
-                  
-              </tr>
+            <tr *ngFor="let aprendiz of aprendices">
+              <td><button (click)="abrirModal(aprendiz)" class="btn btn-primary">ver</button></td>
+              <td>{{aprendiz.documento}}</td>
+              <td>{{aprendiz.nombre}}</td>
+              <td>{{aprendiz.apellido}}</td>
+              <td>{{aprendiz.mail}}</td>
+              <td>{{aprendiz.telefono}}</td>
+              <td><button type="button" [routerLink]="['/novedades/form', aprendiz.id]" class="btn btn-success">Crear
+                  Novedad</button></td>
+              <td><button type="button" [routerLink]="['/aprendices/form', aprendiz.id]"
+                  class="btn btn-primary">Editar</button></td>
+
+            </tr>
           </tbody>
-      </table>
-      <paginator-nav *ngIf="paginador" [paginador] = "paginador"></paginator-nav>
+        </table>
+
+        <paginator-nav *ngIf="paginador" [paginador]="paginador"></paginator-nav>
+      </div>
     </div>
   </div>
+</div>

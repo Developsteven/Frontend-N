@@ -46,13 +46,13 @@
                 No hay Novedad para el aprendiz {{aprendiz.nombre}} {{aprendiz.apellido}}
               </div>
 
-              <table class="table table-bordered table-striped my-4" *ngIf="aprendiz.novedades.length>0">
+              <table class="table table-bordered table-striped my-2" *ngIf="aprendiz.novedades.length>0">
 
                 <thead>
                   <tr>
                     <!-- <th>#</th> -->
                     <th>titulo</th>
-                    <th>descripcion</th>
+                    <!-- <th>descripcion</th> -->
                     <th>Tipo Novedad</th>
                     <th>fecha</th>
                     <th>detalle</th>
@@ -63,7 +63,7 @@
                   <tr *ngFor="let novedad of aprendiz.novedades">
                     <!-- <td>{{novedad.id}}</td> -->
                     <td>{{novedad.titulo}}</td>
-                    <td>{{novedad.descripcion}}</td>
+                    <!-- <td>{{novedad.descripcion}}</td> -->
                     <td>{{novedad.tipoNovedad.nombre}}</td>
                     <td>{{novedad.fecha}}</td>
                     <td><button class="btn btn-primary btn-sm" type="button"
@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button (click)="cerrarModal()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
       </div>
     </div>

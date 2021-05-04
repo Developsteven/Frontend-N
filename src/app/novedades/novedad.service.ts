@@ -24,4 +24,5 @@ export class NovedadService {
   getTipoNovedad(): Observable<TipoNovedad[]>{
     return this.http.get<TipoNovedad[]>(this.urlEndpoint + '/tipoNovedad');
   }
+
 }

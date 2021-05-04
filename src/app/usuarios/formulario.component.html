@@ -4,15 +4,18 @@
   </li>
 </ul>
 
-<div class="card bg-dark text-white">
+<div class="card bg-light text-dark">
   <div class="card-header">{{ titulo}}</div>
   <div class="card-body">
+
+    <div class="m-0 row justify-content-center align-items-center">
+      <div class="col-auto">
 
     <form #usuarioForm="ngForm">
 
       <div class="form-group-row">
-        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
-        <div class="col-sm-6">
+        <label for="nombre" class="col-form-label col-sm">Nombre</label>
+        <div class="col">
           <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="nombre"  #nombre="ngModel">
           <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
             <div *ngIf="nombre.errors.required">
@@ -27,7 +30,7 @@
 
       <div class="form-group-row">
         <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
-        <div class="col-sm-6">
+        <div class="col">
           <input type="text" class="form-control" [(ngModel)]="usuario.apellido" name="apellido" #apellido="ngModel">
           <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
             <div *ngIf="apellido.errors.required">
@@ -39,7 +42,7 @@
 
       <div class="form-group-row">
         <label for="email" class="col-form-label col-sm-2">Email</label>
-        <div class="col-sm-6">
+        <div class="col">
           <input type="email" class="form-control" [(ngModel)]="usuario.mail" name="email" #mail='ngModel'>
           <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
             <div *ngIf="mail.errors.required">
@@ -54,7 +57,7 @@
 
       <div class="form-group-row">
         <label for="email" class="col-form-label col-sm-2">Password</label>
-        <div class="col-sm-6">
+        <div class="col">
           <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password" 
             #password='ngModel'>
           <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
@@ -67,7 +70,7 @@
 
       <div class="form-group-row">
         <label for="rol" class="col-form-label col-sm-2">Rol</label>
-        <div class="col-sm-6">
+        <div class="col">
           <select [compareWith]="compararRol" class="form-select" [(ngModel)]="usuario.rol"
             name="rol" style="width: 500px;">
             <option [ngValue]="undefined">--- seleccionar Rol ---</option>
@@ -79,7 +82,7 @@
 
       <div class="form-group-row">
         <label for="email" class="col-form-label col-sm-2">Estado</label>
-        <div class="col-sm-6">
+        <div class="col">
           <input type="text" class="form-control" [(ngModel)]="usuario.estado" name="estado" #estado='ngModel'>
           <div class="alert alert-danger" *ngIf="estado.invalid && (estado.dirty || estado.touched)">
             <div *ngIf="estado.errors.required">
@@ -90,7 +93,7 @@
       </div>
 
       <div class="form-group row mt-4">
-        <div class="col-sm-6">
+        <div class="col">
           <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!usuario.id else elseBlock"
             [disabled]="!usuarioForm.form.valid">Crear</button>
 
@@ -102,6 +105,8 @@
         </div>
       </div>
     </form>
+  </div>
+</div>
 
   </div>
 

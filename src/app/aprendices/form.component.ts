@@ -14,7 +14,7 @@ import { Trimestre } from './trimestre';
 })
 export class FormComponent implements OnInit {
   public aprendiz: Aprendiz = new Aprendiz();
-  public titulo: string = 'Crear Cliente';
+  public titulo: string = 'Crear Aprendiz';
   public errores: string[];
   tipoDocumentos: TipoDocumento[];
   fichas: Ficha[];
