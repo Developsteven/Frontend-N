@@ -68,7 +68,7 @@
       <div class="form-group-row">
         <label for="rol" class="col-form-label col-sm-2">Rol</label>
         <div class="col-sm-6">
-          <select [compareWith]="compararRol" class="form-control" [(ngModel)]="usuario.rol"
+          <select [compareWith]="compararRol" class="form-select" [(ngModel)]="usuario.rol"
             name="rol" style="width: 500px;">
             <option [ngValue]="undefined">--- seleccionar Rol ---</option>
             <option *ngFor="let rol of roles" [ngValue]="rol">{{rol.nombre}}

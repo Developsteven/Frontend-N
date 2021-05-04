@@ -12,21 +12,33 @@
             <div class="row">
               <div class="col-sm">
 
-                <ul *ngIf="aprendiz" class="list-group text-dark mb-3">
-                  <li class="list-group-item active"><h6>Nombre:</h6>  {{aprendiz.nombre}}</li>
-                  <li class="list-group-item">{{aprendiz.apellido}}</li>
-                  <li class="list-group-item">{{aprendiz.documento}}</li>
-                  <li class="list-group-item">{{aprendiz.mail}}</li>
+                <ul *ngIf="aprendiz" class="list-group text-dark mb-2">
+                  <li class="list-group-item active">
+                    <h6>Nombre:</h6> {{aprendiz.nombre}} {{aprendiz.apellido}}
+                  </li>
+                  <li class="list-group-item">{{aprendiz.tipoDocumento.nombre}}: {{aprendiz.documento}}</li>
+                  <li class="list-group-item">{{ aprendiz.mail}}</li>
                   <li class="list-group-item">{{aprendiz.telefono}}</li>
-                  <li class="list-group-item">{{aprendiz.tipoDocumento}}</li>
                 </ul>
-
               </div>
+                <div class="col-sm">
+                  <ul *ngIf="aprendiz" class="list-group text-dark mb-2">
+                    <li class="list-group-item">{{aprendiz.trimestre.nombre}}</li>
+                    <li class="list-group-item">{{aprendiz.ficha.nombre}}</li>
+                    <li class="list-group-item">{{aprendiz.ficha.numero}}</li>
+                    <li class="list-group-item">{{aprendiz.tipoDocumento}}</li>
+                  </ul>
+                </div>
+
+              
             </div>
 
-            <div class="row">
-              <button type="button" [routerLink]="['/novedades/form', aprendiz.id]" class="btn btn-success btn-sm">Crear
-                Novedad</button>
+            <div class="form-group row mt-1">
+              <div class="col-sm-6">
+                <button type="button" [routerLink]="['/novedades/form', aprendiz.id]"
+                  class="btn btn-success btn-sm">Crear
+                  Novedad</button>
+              </div>
             </div>
 
             <div class="row">
@@ -38,9 +50,10 @@
 
                 <thead>
                   <tr>
-                    <th>#</th>
+                    <!-- <th>#</th> -->
                     <th>titulo</th>
                     <th>descripcion</th>
+                    <th>Tipo Novedad</th>
                     <th>fecha</th>
                     <th>detalle</th>
                   </tr>
@@ -48,13 +61,14 @@
 
                 <tbody>
                   <tr *ngFor="let novedad of aprendiz.novedades">
-                    <td>{{novedad.id}}</td>
+                    <!-- <td>{{novedad.id}}</td> -->
                     <td>{{novedad.titulo}}</td>
                     <td>{{novedad.descripcion}}</td>
+                    <td>{{novedad.tipoNovedad.nombre}}</td>
                     <td>{{novedad.fecha}}</td>
                     <td><button class="btn btn-primary btn-sm" type="button"
                         [routerLink]="['/novedades', novedad.id]">Ver</button></td>
-                    
+
                   </tr>
                 </tbody>
 

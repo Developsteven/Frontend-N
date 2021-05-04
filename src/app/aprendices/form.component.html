@@ -4,16 +4,16 @@
   </li>
 </ul>
 
-<div class="card bg-dark text-white">
+<div class="card bg-light text-dark">
   <div class="card-header">{{ titulo}}</div>
   <div class="card-body">
 
     <form #aprendizForm="ngForm">
 
       <div class="form-group-row">
-        <label for="tipoDocumento" class="col-form-label col-sm-2">Tipo Documento</label>
+        <label for="tipoDocumento" class="col-form-label col-sm">Tipo Documento</label>
         <div class="col-sm-6">
-          <select [compareWith]="compararTipoDocumento" class="form-control" [(ngModel)]="aprendiz.tipoDocumento"
+          <select [compareWith]="compararTipoDocumento" class="form-select " [(ngModel)]="aprendiz.tipoDocumento"
             name="tipoDocumento" style="width: 500px;">
             <option [ngValue]="undefined">--- seleccionar un tipo documento ---</option>
             <option *ngFor="let tipoDocumento of tipoDocumentos" [ngValue]="tipoDocumento">{{tipoDocumento.nombre}}
@@ -23,8 +23,8 @@
       </div>
       
       <div class="form-group-row">
-        <label for="nombre" class="col-form-label col-sm-2">Documento</label>
-        <div class="col-sm-6">
+        <label for="nombre" class="col-sm-2 col-form-label">Documento</label>
+        <div class="col-sm-4">
           <input type="text" class="form-control" [(ngModel)]="aprendiz.documento" name="documento"
             #documento="ngModel">
           <div class="alert alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
@@ -36,8 +36,8 @@
       </div>
 
       <div class="form-group-row">
-        <label for="nombre" class="col-form-label col-sm-2">Nombre</label>
-        <div class="col-sm-6">
+        <label for="nombre" class="col-form-label col-sm">Nombre</label>
+        <div class="col-sm-4">
           <input type="text" class="form-control" [(ngModel)]="aprendiz.nombre" name="nombre" #nombre="ngModel">
           <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
             <div *ngIf="nombre.errors.required">
@@ -51,8 +51,8 @@
       </div>
 
       <div class="form-group-row">
-        <label for="apellido" class="col-form-label col-sm-2">Apellido</label>
-        <div class="col-sm-6">
+        <label for="apellido" class="col-form-label col-sm">Apellido</label>
+        <div class="col-sm-4">
           <input type="text" class="form-control" [(ngModel)]="aprendiz.apellido" name="apellido" #apellido="ngModel">
           <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
             <div *ngIf="apellido.errors.required">
@@ -63,8 +63,8 @@
       </div>
 
       <div class="form-group-row">
-        <label for="email" class="col-form-label col-sm-2">Email</label>
-        <div class="col-sm-6">
+        <label for="email" class="col-form-label col-sm">Email</label>
+        <div class="col-sm-4">
           <input type="email" class="form-control" [(ngModel)]="aprendiz.mail" name="email" #mail='ngModel'>
           <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
             <div *ngIf="mail.errors.required">
@@ -78,8 +78,8 @@
       </div>
 
       <div class="form-group-row">
-        <label for="telefono" class="col-form-label col-sm-2">Telefono</label>
-        <div class="col-sm-6">
+        <label for="telefono" class="col-form-label col-sm">Telefono</label>
+        <div class="col-sm-4">
           <input type="text" class="form-control" [(ngModel)]="aprendiz.telefono" name="telefono" #telefono='ngModel'>
           <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
             <div *ngIf="telefono.errors.required">
@@ -90,9 +90,9 @@
       </div>
 
       <div class="form-group-row">
-        <label for="ficha" class="col-form-label col-sm-2">Ficha</label>
-        <div class="col-sm-6">
-          <select [compareWith]="compararFicha" class="form-control" [(ngModel)]="aprendiz.ficha"
+        <label for="ficha" class="col-form-label col-sm">Ficha</label>
+        <div class="col-sm-4">
+          <select [compareWith]="compararFicha" class="form-select" [(ngModel)]="aprendiz.ficha"
             name="ficha" style="width: 500px;">
             <option [ngValue]="undefined">--- seleccionar una ficha ---</option>
             <option *ngFor="let ficha of fichas" [ngValue]="ficha">{{ficha.nombre}}
@@ -102,9 +102,9 @@
       </div>
 
       <div class="form-group-row">
-        <label for="trimestre" class="col-form-label col-sm-2">Trimestre</label>
-        <div class="col-sm-6">
-          <select [compareWith]="compararTrimestre" class="form-control" [(ngModel)]="aprendiz.trimestre"
+        <label for="trimestre" class="col-form-label col-sm">Trimestre</label>
+        <div class="col-sm-4">
+          <select [compareWith]="compararTrimestre" class="form-select" [(ngModel)]="aprendiz.trimestre"
             name="trimestre" style="width: 500px;">
             <option [ngValue]="undefined">--- seleccionar un trimestre ---</option>
             <option *ngFor="let trimestre of trimestres" [ngValue]="trimestre">{{trimestre.nombre}}
