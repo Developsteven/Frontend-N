@@ -1,4 +1,5 @@
 import { Aprendiz } from "../aprendices/aprendiz";
+import { TipoNovedad } from "./tipo-novedad";
 
 export class Novedad {
 
@@ -8,4 +9,5 @@ export class Novedad {
     fecha: string;
 
     aprendiz: Aprendiz;
+    tipoNovedad: TipoNovedad;
 }

@@ -19,6 +19,7 @@ import { PaginadorrComponent } from './paginator/paginadorr.component';
 import { DetalleComponent } from './aprendices/detalle/detalle.component';
 import { DetalleUserComponent } from './usuarios/detalleUser/detalleUser.component';
 import { DetalleNovedadComponent } from './novedades/detalle-novedad.component';
+import { NovedadesComponent } from './novedades/novedades.component';
 
 
 registerLocaleData(LocalES, 'es');
@@ -34,6 +35,7 @@ const routes: Routes =[
   {path: 'usuarios/formulario', component: FormularioComponent},
   {path: 'usuarios/formulario/:id', component: FormularioComponent},
   {path: 'novedades/:id', component: DetalleNovedadComponent},
+  {path: 'novedades/form/:aprendizId', component: NovedadesComponent},
 ];
 
 @NgModule({
@@ -50,6 +52,7 @@ const routes: Routes =[
     DetalleComponent,
     DetalleUserComponent,
     DetalleNovedadComponent,
+    NovedadesComponent,
   ],
   imports: [
     BrowserModule,

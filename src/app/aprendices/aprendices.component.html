@@ -34,7 +34,7 @@
                   <td>{{aprendiz.apellido}}</td>
                   <td>{{aprendiz.mail}}</td>
                   <td>{{aprendiz.telefono}}</td>
-                  <td><button type="button" class="btn btn-success">Crear Novedad</button></td>
+                  <td><button type="button" [routerLink]="['/novedades/form', aprendiz.id]" class="btn btn-success">Crear Novedad</button></td>
                   <td><button type="button" [routerLink]="['/aprendices/form', aprendiz.id]" class="btn btn-primary">Editar</button></td>
                   
               </tr>

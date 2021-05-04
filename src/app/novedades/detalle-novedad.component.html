@@ -1,4 +1,4 @@
-<div class="card bg-light" >
+<div class="card bg-light" *ngIf="novedad">
     <div class="card-header">{{titulo}}</div>
     <div class="card-body">
       <h4 class="card-title">
@@ -11,7 +11,7 @@
         <li class="list-group-item ">{{novedad.aprendiz.apellido}}</li>
       </ul>
   
-      <ul class="list-group my-2">
+      <ul class="list-group my-2" >
         <li class="list-group-item list-group-item-primary">Datos de la Novedad</li>
         <li class="list-group-item ">Titulo: {{novedad.titulo}}</li>
         <li class="list-group-item ">Fecha: {{novedad.fecha}}</li>
