@@ -31,11 +31,15 @@ export class NovedadesComponent implements OnInit {
     this.novedadService.getTipoNovedad().subscribe(tipoNovedades => this.tipoNovedades = tipoNovedades);
   }
 
-  create(): void{
-    this.novedadService.create(this.novedad).subscribe(novedad => {
-      Swal.fire('Novedad Nueva',`Novedad ${novedad.titulo} creada con exito!`, 'success');
-      this.router.navigate(['/aprendices']);
-    });
+  create(novedadForm): void{
+
+    if(novedadForm.form.valid){
+      
+      this.novedadService.create(this.novedad).subscribe((novedad) => {
+        Swal.fire('Novedad Nueva',`Novedad ${novedad.titulo} creada con exito!`, 'success');
+        this.router.navigate(['/aprendices']);
+      });
+    }
   }
 
   compararTipoNovedad(o1:TipoNovedad, o2:TipoNovedad): boolean {

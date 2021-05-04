@@ -1,138 +1,146 @@
-<ul class="alert alert-danger" *ngIf="errores?.length > 0">
-  <li *ngFor="let err of errores">
-    {{ err }}
-  </li>
-</ul>
+<div class="m-0 row justify-content-center align-items-center">
+  <div class="col-auto">
 
-<div class="card bg-light-gray text-dark">
-  <div class="card-header">{{ titulo}}</div>
-  <div class="card-body">
+    <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+      <li *ngFor="let err of errores">
+        {{ err }}
+      </li>
+    </ul>
 
-    <div class="m-0 row justify-content-center align-items-center">
-      <div class="col-auto">
+    <div class="card bg-light-gray text-dark">
+      <div class="card-header bg-primary text-light">{{ titulo}}</div>
+      <div class="card-body">
 
-    <form #aprendizForm="ngForm">
+        <div class="m-0 row justify-content-center align-items-center">
+          <div class="col-auto">
 
-      <div class="form-group-row">
-        <label for="tipoDocumento" class="col-form-label col-sm">Tipo Documento</label>
-        <div class="col-sm-6">
-          <select [compareWith]="compararTipoDocumento" class="form-select " [(ngModel)]="aprendiz.tipoDocumento"
-            name="tipoDocumento" style="width: 500px;">
-            <option [ngValue]="undefined">--- seleccionar un tipo documento ---</option>
-            <option *ngFor="let tipoDocumento of tipoDocumentos" [ngValue]="tipoDocumento">{{tipoDocumento.nombre}}
-            </option>
-          </select>
-        </div>
-      </div>
-      
-      <div class="form-group-row">
-        <label for="nombre" class="col-sm-2 col-form-label">Documento</label>
-        <div class="col">
-          <input type="text" class="form-control" [(ngModel)]="aprendiz.documento" name="documento"
-            #documento="ngModel">
-          <div class="alert alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
-            <div *ngIf="documento.errors.required">
-              Documento es requerido
-            </div>
+            <form #aprendizForm="ngForm">
+
+              <div class="form-group-row">
+                <label for="tipoDocumento" class="col-form-label col-sm">Tipo Documento</label>
+                <div class="col-sm-6">
+                  <select [compareWith]="compararTipoDocumento" class="form-select "
+                    [(ngModel)]="aprendiz.tipoDocumento" name="tipoDocumento" style="width: 500px;">
+                    <option [ngValue]="undefined">--- seleccionar un tipo documento ---</option>
+                    <option *ngFor="let tipoDocumento of tipoDocumentos" [ngValue]="tipoDocumento">
+                      {{tipoDocumento.nombre}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <label for="nombre" class="col-sm-2 col-form-label">Documento</label>
+                <div class="col">
+                  <input type="text" class="form-control" [(ngModel)]="aprendiz.documento" name="documento"
+                    #documento="ngModel">
+                  <div class="alert alert-danger" *ngIf="documento.invalid && (documento.dirty || documento.touched)">
+                    <div *ngIf="documento.errors.required">
+                      Documento es requerido
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <label for="nombre" class="col-form-label col-sm">Nombre</label>
+                <div class="col">
+                  <input type="text" class="form-control" [(ngModel)]="aprendiz.nombre" name="nombre" #nombre="ngModel">
+                  <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                    <div *ngIf="nombre.errors.required">
+                      Nombre es requerido
+                    </div>
+                    <div *ngIf="nombre.errors.minlength">
+                      Nombre debe tener al menos 4 caracteres
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <label for="apellido" class="col-form-label col-sm">Apellido</label>
+                <div class="col">
+                  <input type="text" class="form-control" [(ngModel)]="aprendiz.apellido" name="apellido"
+                    #apellido="ngModel">
+                  <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                    <div *ngIf="apellido.errors.required">
+                      Apellido es requerido
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <label for="email" class="col-form-label col-sm">Email</label>
+                <div class="col">
+                  <input type="email" class="form-control" [(ngModel)]="aprendiz.mail" name="email" #mail='ngModel'>
+                  <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                    <div *ngIf="mail.errors.required">
+                      Email es requerido
+                    </div>
+                    <div *ngIf="mail.errors.email">
+                      Email debe tener un formato valido
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <label for="telefono" class="col-form-label col-sm">Telefono</label>
+                <div class="col">
+                  <input type="text" class="form-control" [(ngModel)]="aprendiz.telefono" name="telefono"
+                    #telefono='ngModel'>
+                  <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+                    <div *ngIf="telefono.errors.required">
+                      Telefono es requerido
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <label for="ficha" class="col-form-label col-sm">Ficha</label>
+                <div class="col-sm-4">
+                  <select [compareWith]="compararFicha" class="form-select" [(ngModel)]="aprendiz.ficha" name="ficha"
+                    style="width: 500px;">
+                    <option [ngValue]="undefined">--- seleccionar una ficha ---</option>
+                    <option *ngFor="let ficha of fichas" [ngValue]="ficha">{{ficha.nombre}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <label for="trimestre" class="col-form-label col-sm">Trimestre</label>
+                <div class="col-sm-4">
+                  <select [compareWith]="compararTrimestre" class="form-select" [(ngModel)]="aprendiz.trimestre"
+                    name="trimestre" style="width: 500px;">
+                    <option [ngValue]="undefined">--- seleccionar un trimestre ---</option>
+                    <option *ngFor="let trimestre of trimestres" [ngValue]="trimestre">{{trimestre.nombre}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="form-group row mt-4">
+                <div class="col-sm-6">
+                  <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!aprendiz.id else elseBlock"
+                    [disabled]="!aprendizForm.form.valid">Crear</button>
+
+                  <ng-template #elseBlock>
+                    <button class="btn btn-primary" role="button" (click)="update()"
+                      [disabled]="!aprendizForm.form.valid">Editar</button>
+                  </ng-template>
+
+                </div>
+              </div>
+            </form>
           </div>
         </div>
+
       </div>
 
-      <div class="form-group-row">
-        <label for="nombre" class="col-form-label col-sm">Nombre</label>
-        <div class="col">
-          <input type="text" class="form-control" [(ngModel)]="aprendiz.nombre" name="nombre" #nombre="ngModel">
-          <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
-            <div *ngIf="nombre.errors.required">
-              Nombre es requerido
-            </div>
-            <div *ngIf="nombre.errors.minlength">
-              Nombre debe tener al menos 4 caracteres
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group-row">
-        <label for="apellido" class="col-form-label col-sm">Apellido</label>
-        <div class="col">
-          <input type="text" class="form-control" [(ngModel)]="aprendiz.apellido" name="apellido" #apellido="ngModel">
-          <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
-            <div *ngIf="apellido.errors.required">
-              Apellido es requerido
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group-row">
-        <label for="email" class="col-form-label col-sm">Email</label>
-        <div class="col">
-          <input type="email" class="form-control" [(ngModel)]="aprendiz.mail" name="email" #mail='ngModel'>
-          <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
-            <div *ngIf="mail.errors.required">
-              Email es requerido
-            </div>
-            <div *ngIf="mail.errors.email">
-              Email debe tener un formato valido
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group-row">
-        <label for="telefono" class="col-form-label col-sm">Telefono</label>
-        <div class="col">
-          <input type="text" class="form-control" [(ngModel)]="aprendiz.telefono" name="telefono" #telefono='ngModel'>
-          <div class="alert alert-danger" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
-            <div *ngIf="telefono.errors.required">
-              Telefono es requerido
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="form-group-row">
-        <label for="ficha" class="col-form-label col-sm">Ficha</label>
-        <div class="col-sm-4">
-          <select [compareWith]="compararFicha" class="form-select" [(ngModel)]="aprendiz.ficha"
-            name="ficha" style="width: 500px;">
-            <option [ngValue]="undefined">--- seleccionar una ficha ---</option>
-            <option *ngFor="let ficha of fichas" [ngValue]="ficha">{{ficha.nombre}}
-            </option>
-          </select>
-        </div>
-      </div>
-
-      <div class="form-group-row">
-        <label for="trimestre" class="col-form-label col-sm">Trimestre</label>
-        <div class="col-sm-4">
-          <select [compareWith]="compararTrimestre" class="form-select" [(ngModel)]="aprendiz.trimestre"
-            name="trimestre" style="width: 500px;">
-            <option [ngValue]="undefined">--- seleccionar un trimestre ---</option>
-            <option *ngFor="let trimestre of trimestres" [ngValue]="trimestre">{{trimestre.nombre}}
-            </option>
-          </select>
-        </div>
-      </div>
-      
-
-      <div class="form-group row mt-4">
-        <div class="col-sm-6">
-          <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!aprendiz.id else elseBlock"
-            [disabled]="!aprendizForm.form.valid">Crear</button>
-
-          <ng-template #elseBlock>
-            <button class="btn btn-primary" role="button" (click)="update()"
-              [disabled]="!aprendizForm.form.valid">Editar</button>
-          </ng-template>
-
-        </div>
-      </div>
-    </form>
+    </div>
   </div>
-</div>
-
-  </div>
-
 </div>

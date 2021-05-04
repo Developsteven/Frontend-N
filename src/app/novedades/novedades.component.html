@@ -62,12 +62,16 @@
       <div class="form-group-row mb-2">
         <label for="tipoNovedad" class="col-sm-2 col-form-label">Tipo Novedad</label>
         <div class="col-sm-6">
-          <select [compareWith]="compararTipoNovedad" class="form-select" [(ngModel)]="novedad.tipoNovedad"
-            name="tipoNovedad" > <!-- style="width: 500px;" -->
+          <select [compareWith]="compararTipoNovedad" class="form-select" [(ngModel)]="novedad.tipoNovedad" required
+            name="tipoNovedad" #tipoNovedad="ngModel"> <!-- style="width: 500px;" -->
             <option [ngValue]="undefined">--- seleccionar un tipo Novedad ---</option>
             <option *ngFor="let tipoNovedad of tipoNovedades" [ngValue]="tipoNovedad">{{tipoNovedad.nombre}}
             </option>
           </select>
+          <div class="alert alert-danger"
+            *ngIf="tipoNovedad.invalid && novedadForm.submitted">
+            Tipo de novedad es requerida.
+          </div>
         </div>
       </div>
 
@@ -85,7 +89,7 @@
 
       <div class="form-group row">
         <div class="col-sm-6">
-          <input type="submit" value="Crear Novedad" (click)="create()" class="btn btn-success"/> <!-- novedadForm -->
+          <input type="submit" value="Crear Novedad" (click)="create(novedadForm)" class="btn btn-success"/>
         </div>
       </div>
     </form>
