@@ -14,6 +14,7 @@ export class AprendicesComponent implements OnInit {
   aprendices: Aprendiz[];
   paginador: any;
   aprendizSeleccionado: Aprendiz;
+  buscarAprendiz: Aprendiz;
 
   constructor(private aprendizService: AprendizService,
     private activatedRoute: ActivatedRoute,
@@ -41,5 +42,9 @@ export class AprendicesComponent implements OnInit {
   abrirModal(aprendiz: Aprendiz){
     this.aprendizSeleccionado = aprendiz;
     this.modalService.abrirModal();
+  }
+
+  getDocumento(documento){
+    this.aprendizService.getDocumento(documento);
   }
 }

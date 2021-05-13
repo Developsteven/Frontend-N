@@ -97,4 +97,16 @@ export class AprendizService {
         })
       );
   }
+
+  getDocumento(aprendiz): Observable<Aprendiz>{
+    return this.http.get<Aprendiz>(`${this.urlEndpoint}+ '/documento' + ${aprendiz}`).pipe(
+      catchError((e) => {
+        if (e.status != 401 && e.error.mensaje) {
+          this.router.navigate(['/aprendices']);
+          console.error(e.error.mensaje);
+        }
+        return throwError(e);
+      })
+    );
+  }
 }
