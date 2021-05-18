@@ -20,12 +20,16 @@ import { DetalleComponent } from './aprendices/detalle/detalle.component';
 import { DetalleUserComponent } from './usuarios/detalleUser/detalleUser.component';
 import { DetalleNovedadComponent } from './novedades/detalle-novedad.component';
 import { NovedadesComponent } from './novedades/novedades.component';
+import { LoginComponent } from './auth/login.component';
+import { RegistroComponent } from './auth/registro.component';
 
 
 registerLocaleData(LocalES, 'es');
 
 const routes: Routes =[
   {path: '', redirectTo: '/sena', pathMatch: 'full'},
+  {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
   {path: 'aprendices', component: AprendicesComponent},
   {path: 'aprendices/page/:page', component: AprendicesComponent},
   {path: 'usuarios', component: UsuariosComponent},
@@ -53,6 +57,8 @@ const routes: Routes =[
     DetalleUserComponent,
     DetalleNovedadComponent,
     NovedadesComponent,
+    LoginComponent,
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
