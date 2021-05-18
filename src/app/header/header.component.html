@@ -5,32 +5,25 @@
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse mx-sm-5" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item" routerLinkActive="active">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item" routerLinkActive="active" *ngIf="isLogged">
           <a class="nav-link " aria-current="page" routerLink="/aprendices">Novedades</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="isLogged">
           <a class="nav-link " aria-current="page" routerLink="/usuarios" >Usuarios</a>
         </li>
-        <li class="nav-item" routerLinkActive="active">
+        <li class="nav-item" routerLinkActive="active" *ngIf="isLogged">
           <a class="nav-link " aria-current="page" >Documentos</a>
         </li>
-      </ul>
-      
-      <ul class="navbar-nav navbar-rigth">
-        <li><a routerLink="/login" class="btn btn-outline-primary" >Sing In</a></li>
-        
-        <li class="dropdown">
-          <a class="btn btn-outline-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-            
-          </a>
-        
-          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <button class="dropdown-item" type="submit"> Sing Out</button>
-          </ul>
+
+        <li class="nav-item" *ngIf="!isLogged">
+          <a class="nav-link " routerLink="/login" class="btn btn-outline-primary" >Iniciar Sesion</a>
         </li>
 
+        <li class="nav-item" *ngIf="isLogged" (click)="onLogOut()">
+          <a class="nav-link " routerLink="/login" class="btn btn-outline-primary" >Cerrar Sesion</a>
+        </li>
       </ul>
     </div>
   </div>
