@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
+import { TokenService } from '../token/token.service';
 import { Aprendiz } from './aprendiz';
 import { AprendizService } from './aprendiz.service';
 import { ModalService } from './detalle/modal.service';
@@ -15,10 +16,13 @@ export class AprendicesComponent implements OnInit {
   paginador: any;
   aprendizSeleccionado: Aprendiz;
   buscarAprendiz: Aprendiz;
+  roles: string[];
+  isAdmin = false;
 
   constructor(private aprendizService: AprendizService,
     private activatedRoute: ActivatedRoute,
-    private modalService: ModalService) {}
+    private modalService: ModalService,
+    private tokenService: TokenService) {}
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(params =>{
@@ -37,6 +41,13 @@ export class AprendicesComponent implements OnInit {
       this.paginador = response;
     });
   });
+
+  this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   abrirModal(aprendiz: Aprendiz){

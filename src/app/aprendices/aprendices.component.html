@@ -47,7 +47,7 @@
               <th>Email</th>
               <th>Telefono</th>
               <th>Crear Novedad</th>
-              <th>editar</th>
+              <th *ngIf="isAdmin">editar</th>
             </tr>
           </thead>
           <tbody>
@@ -60,7 +60,7 @@
               <td>{{aprendiz.telefono}}</td>
               <td><button type="button" [routerLink]="['/novedades/form', aprendiz.id]" class="btn btn-success">Crear
                   Novedad</button></td>
-              <td><button type="button" [routerLink]="['/aprendices/form', aprendiz.id]"
+              <td *ngIf="isAdmin"><button type="button" [routerLink]="['/aprendices/form', aprendiz.id]"
                   class="btn btn-primary">Editar</button></td>
 
             </tr>
