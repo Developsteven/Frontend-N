@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { LoginUsuario } from '../dto/login-usuario';
 import { AuthService } from '../token/auth.service';
 import { TokenService } from '../token/token.service';
@@ -43,11 +44,13 @@ export class LoginComponent implements OnInit {
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
         this.router.navigate(['/aprendices']);
+        Swal.fire('Bienvenido', `Usuario ${data.nombreUsuario} logueado con exito!`, 'success');
       },
       err => {
         this.isLogged = false;
         this.isLoginFail = true;
         this.errMsj = err.error.message;
+        Swal.fire('Error', `${err.error.mensaje}!`, 'error');
         // console.log(err.error.message);
       }
     );

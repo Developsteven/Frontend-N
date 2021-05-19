@@ -1,27 +1,27 @@
-import { Component, OnInit } from "@angular/core";
-import { TokenService } from "../token/token.service";
+import { Component, OnInit } from '@angular/core';
+import { TokenService } from '../token/token.service';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html'
+  selector: 'app-header',
+  templateUrl: './header.component.html',
 })
-export class HeaderComponent implements OnInit{
-    title: string = 'SENA'
+export class HeaderComponent implements OnInit {
+  title: string = 'SENA';
 
-    isLogged = false;
+  isLogged = false;
 
-    constructor(private tokenService: TokenService) { }
+  constructor(private tokenService: TokenService) {}
 
-    ngOnInit() {
-        if (this.tokenService.getToken()) {
-          this.isLogged = true;
-        } else {
-          this.isLogged = false;
-        }
-      }
-    
-      onLogOut(): void {
-        this.tokenService.logOut();
-        window.location.reload();
-      }
+  ngOnInit() {
+    if (this.tokenService.getToken()) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+
+  onLogOut(): void {
+    this.tokenService.logOut();
+    window.location.reload();
+  }
 }
