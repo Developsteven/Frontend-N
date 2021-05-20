@@ -25,7 +25,7 @@ import { NovedadesComponent } from './novedades/novedades.component';
 registerLocaleData(LocalES, 'es');
 
 const routes: Routes =[
-  {path: '', redirectTo: '/sena', pathMatch: 'full'},
+  {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: 'aprendices', component: AprendicesComponent},
   {path: 'aprendices/page/:page', component: AprendicesComponent},
   {path: 'usuarios', component: UsuariosComponent},
