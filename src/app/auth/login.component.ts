@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(private tokenService: TokenService,
     private authService: AuthService,
-    private router: Router,) { }
+    private router: Router) { }
 
   ngOnInit(): void {
     if (this.tokenService.getToken()) {
@@ -44,13 +44,13 @@ export class LoginComponent implements OnInit {
         this.tokenService.setAuthorities(data.authorities);
         this.roles = data.authorities;
         this.router.navigate(['/aprendices']);
-        Swal.fire('Bienvenido', `Usuario ${data.nombreUsuario} logueado con exito!`, 'success');
+        Swal.fire('Bienvenido', `Usuario autenticado con exito!`, 'success');
       },
       err => {
         this.isLogged = false;
         this.isLoginFail = true;
         this.errMsj = err.error.message;
-        Swal.fire('Error', `${err.error.mensaje}!`, 'error');
+        /* Swal.fire('Error', `${err.error.message}!`, 'error'); */
         // console.log(err.error.message);
       }
     );

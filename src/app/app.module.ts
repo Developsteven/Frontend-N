@@ -30,7 +30,7 @@ import { ProdGuardService as guard} from './guards/prod-guard.service';
 registerLocaleData(LocalES, 'es');
 
 const routes: Routes =[
-  {path: '', redirectTo: '/sena', pathMatch: 'full'},
+  {path: '', redirectTo: '/', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'registro', component: RegistroComponent},
   {path: 'aprendices', component: AprendicesComponent, canActivate: [guard], data: {expectedRol:['admin', 'user']}},

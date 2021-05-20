@@ -39,14 +39,15 @@ export class RegistroComponent implements OnInit {
         this.isRegister = true;
         this.isRegisterFail = false;
         this.router.navigate(['/login']);
-        Swal.fire('Creado', `Usuario ${data.nombreUsuario} creado con exito!`, 'success');
+        Swal.fire('Creado', `Usuario ${data.nombre} creado con exito!`, 'success');
         
       },
       err => {
         this.isRegister = false;
         this.isRegisterFail = false;
-        this.router.navigate(['/registro']);
-        Swal.fire('Error', `Usuario no se pudo crear!`, 'error');
+        this.errMsj = err.error.mensaje;
+        //this.router.navigate(['/registro']);
+        //Swal.fire('Error', `Usuario no se pudo crear!`, 'error');
         // console.log(err.error.message);
       }
     );

@@ -25,6 +25,13 @@ export class AprendicesComponent implements OnInit {
     private tokenService: TokenService) {}
 
   ngOnInit() {
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
+
     this.activatedRoute.paramMap.subscribe(params =>{
       let page: number = +params.get('page');
 
@@ -42,12 +49,7 @@ export class AprendicesComponent implements OnInit {
     });
   });
 
-  this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol => {
-      if (rol === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
+  
   }
 
   abrirModal(aprendiz: Aprendiz){

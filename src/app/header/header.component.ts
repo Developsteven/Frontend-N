@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import Swal from 'sweetalert2';
 import { TokenService } from '../token/token.service';
 
 @Component({
@@ -9,8 +11,11 @@ export class HeaderComponent implements OnInit {
   title: string = 'SENA';
 
   isLogged = false;
+  roles: string[];
+  isAdmin = false;
 
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService,
+    private router: Router) {}
 
   ngOnInit() {
     if (this.tokenService.getToken()) {
@@ -18,10 +23,20 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLogged = false;
     }
+
+    this.roles = this.tokenService.getAuthorities();
+    this.roles.forEach(rol => {
+      if (rol === 'ROLE_ADMIN') {
+        this.isAdmin = true;
+      }
+    });
   }
 
   onLogOut(): void {
     this.tokenService.logOut();
-    window.location.reload();
+    
+    Swal.fire('Logout', `has cerrado sesion con exito`, 'success');
+    this.router.navigate(['/login']);
+    location.href;
   }
 }
