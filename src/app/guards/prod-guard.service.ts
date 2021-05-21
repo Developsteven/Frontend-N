@@ -23,7 +23,7 @@ export class ProdGuardService implements CanActivate {
       }
     });
     if (!this.tokenService.getToken() || expectedRol.indexOf(this.realRol) === -1) {
-      this.router.navigate(['/aprendices']);
+      //this.router.navigate(['/aprendices']);
       return false;
     }
     return true;

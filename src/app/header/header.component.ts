@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit {
     } else {
       this.isLogged = false;
     }
-
     this.roles = this.tokenService.getAuthorities();
     this.roles.forEach(rol => {
       if (rol === 'ROLE_ADMIN') {
@@ -34,9 +33,9 @@ export class HeaderComponent implements OnInit {
 
   onLogOut(): void {
     this.tokenService.logOut();
-    
-    Swal.fire('Logout', `has cerrado sesion con exito`, 'success');
+    location.reload();
     this.router.navigate(['/login']);
-    location.href;
+    Swal.fire('Logout', `has cerrado sesion con exito`, 'success');
+    
   }
 }

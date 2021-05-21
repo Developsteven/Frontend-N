@@ -45,13 +45,14 @@ export class LoginComponent implements OnInit {
         this.roles = data.authorities;
         this.router.navigate(['/aprendices']);
         Swal.fire('Bienvenido', `Usuario autenticado con exito!`, 'success');
+        location.reload();
       },
       err => {
         this.isLogged = false;
         this.isLoginFail = true;
         this.errMsj = err.error.message;
-        /* Swal.fire('Error', `${err.error.message}!`, 'error'); */
-        // console.log(err.error.message);
+        //Swal.fire('Error', `${err.error.message}!`, 'error');
+        //console.log(err.errors.mensaje);
       }
     );
   }
