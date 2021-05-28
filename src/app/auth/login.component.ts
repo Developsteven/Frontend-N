@@ -50,8 +50,8 @@ export class LoginComponent implements OnInit {
       err => {
         this.isLogged = false;
         this.isLoginFail = true;
-        this.errMsj = err.error.message;
-        //Swal.fire('Error', `${err.error.message}!`, 'error');
+        //this.errMsj = err.error.message;
+        Swal.fire('Error login', 'Usuario o clave incorrectas', 'error');
         //console.log(err.errors.mensaje);
       }
     );

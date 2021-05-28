@@ -45,6 +45,27 @@
             name="trimestre" disabled />
         </div>
       </div>
+
+
+      <div class="form-group row mb-2" *ngIf="novedad.aprendiz">
+        <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" value="{{nombreUsuario}}"
+            name="usuario" disabled />
+        </div>
+      </div>
+
+      <!-- <div class="form-group row mb-2">
+        <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="novedad.usuario" name="usuario" required
+          #usuario="ngModel"/>
+          <div class="alert alert-danger"
+            *ngIf="usuario.invalid && usuario.touched || usuario.invalid && novedadForm.submitted">
+            El titulo es requerido.
+          </div>
+        </div>
+      </div> -->
       
 
       <div class="form-group row mb-2">

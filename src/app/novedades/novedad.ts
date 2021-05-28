@@ -1,4 +1,5 @@
 import { Aprendiz } from "../aprendices/aprendiz";
+import { Usuario } from "../usuarios/usuario";
 import { TipoNovedad } from "./tipo-novedad";
 
 export class Novedad {
@@ -10,4 +11,5 @@ export class Novedad {
 
     aprendiz: Aprendiz;
     tipoNovedad: TipoNovedad;
+    usuario: Usuario;
 }

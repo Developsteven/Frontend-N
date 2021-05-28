@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
+import { Usuario } from '../usuarios/usuario';
 
 const TOKEN_KEY = 'AuthToken';
 const USERNAME_KEY = 'AuthUserName';
 const AUTHORITIES_KEY = 'AuthAuthorities';
+const ID_KEY = 'AuthNombre';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ const AUTHORITIES_KEY = 'AuthAuthorities';
 export class TokenService {
 
   roles: Array<string> = [];
+  /* private _usuario: Usuario; */
 
   constructor() { }
 
@@ -21,6 +24,27 @@ export class TokenService {
   public getToken(): string {
     return sessionStorage.getItem(TOKEN_KEY);
   }
+
+  public getId(): string {
+    return sessionStorage.getItem(ID_KEY);
+  }
+
+  /* obtenerDatosToken(token: string): any {
+    if (token != null) {
+      return JSON.parse(atob(token.split('.')[1]));
+    }
+    return null;
+  } */
+
+  /* getNombreUsuario(token: string): void {
+    let payload = this.obtenerDatosToken(token);
+    return  this._usuario.nombre = payload.nombre;
+  } */
+
+  /* getIdUsuario(token: string): any {
+    let payload = this.obtenerDatosToken(token);
+    return  this._usuario.id = payload.id;
+  } */
 
   public setUserName(userName: string): void {
     window.sessionStorage.removeItem(USERNAME_KEY);
