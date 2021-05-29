@@ -16,6 +16,7 @@ export class RegistroComponent implements OnInit {
   isRegisterFail = false;
   nombreUsuario: string;
   nombre: string;
+  apellido: string;
   email: string;
   password: string;
   errMsj: string;
@@ -33,7 +34,7 @@ export class RegistroComponent implements OnInit {
   }
 
   onRegister(): void {
-    this.nuevoUsuario = new NuevoUsuario(this.nombre, this.nombreUsuario, this.email, this.password);
+    this.nuevoUsuario = new NuevoUsuario(this.nombre, this.apellido, this.nombreUsuario, this.email, this.password);
     this.authService.nuevo(this.nuevoUsuario).subscribe(
       data => {
         this.isRegister = true;

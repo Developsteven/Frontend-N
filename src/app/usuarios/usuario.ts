@@ -5,7 +5,7 @@ export class Usuario {
     id: number;
     nombre: string;
     apellido: string;
-    mail: string;
+    email: string;
     estado: boolean;
     password:string;
 

@@ -34,7 +34,7 @@ export class UsuariosComponent implements OnInit {
         .pipe(
           tap((response) => {
             (response.content as Usuario[]).forEach((usuario) => {
-              console.log(usuario.nombre);
+              //console.log(usuario.nombre);
             });
           })
         )
