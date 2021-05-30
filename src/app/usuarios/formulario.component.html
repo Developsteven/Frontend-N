@@ -45,14 +45,14 @@
               </div>
 
               <div class="form-group-row">
-                <label for="email" class="col-form-label col-sm">Email</label>
+                <label for="mail" class="col-form-label col-sm">Email</label>
                 <div class="col">
-                  <input type="email" class="form-control" [(ngModel)]="usuario.email" name="email" #email='ngModel'>
-                  <div class="alert alert-danger" *ngIf="email.invalid && (email.dirty || email.touched)">
+                  <input type="mail" class="form-control" [(ngModel)]="usuario.mail" name="mail" #mail='ngModel'>
+                  <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
                     <div *ngIf="mail.errors.required">
                       Email es requerido
                     </div>
-                    <div *ngIf="mail.errors.email">
+                    <div *ngIf="mail.errors.mail">
                       Email debe tener un formato valido
                     </div>
                   </div>
