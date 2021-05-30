@@ -21,6 +21,7 @@ import { DetalleUserComponent } from './usuarios/detalleUser/detalleUser.compone
 import { DetalleNovedadComponent } from './novedades/detalle-novedad.component';
 import { NovedadesComponent } from './novedades/novedades.component';
 import { LoginComponent } from './usuarios/login/login.component';
+import { AuthGuard } from './usuarios/guards/auth.guard';
 
 
 
@@ -30,16 +31,16 @@ registerLocaleData(LocalES, 'es');
 const routes: Routes =[
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'aprendices', component: AprendicesComponent},
-  {path: 'aprendices/page/:page', component: AprendicesComponent},
-  {path: 'usuarios', component: UsuariosComponent},
-  {path: 'usuarios/page/:page', component: UsuariosComponent},
-  {path: 'aprendices/form', component: FormComponent},
-  {path: 'aprendices/form/:id', component: FormComponent},
-  {path: 'usuarios/formulario', component: FormularioComponent},
-  {path: 'usuarios/formulario/:id', component: FormularioComponent},
-  {path: 'novedades/:id', component: DetalleNovedadComponent},
-  {path: 'novedades/form/:aprendizId', component: NovedadesComponent},
+  {path: 'aprendices', component: AprendicesComponent, canActivate:[AuthGuard]},
+  {path: 'aprendices/page/:page', component: AprendicesComponent, canActivate:[AuthGuard]},
+  {path: 'usuarios', component: UsuariosComponent, canActivate:[AuthGuard]},
+  {path: 'usuarios/page/:page', component: UsuariosComponent, canActivate:[AuthGuard]},
+  {path: 'aprendices/form', component: FormComponent, canActivate:[AuthGuard]},
+  {path: 'aprendices/form/:id', component: FormComponent, canActivate:[AuthGuard]},
+  {path: 'usuarios/formulario', component: FormularioComponent, canActivate:[AuthGuard]},
+  {path: 'usuarios/formulario/:id', component: FormularioComponent, canActivate:[AuthGuard]},
+  {path: 'novedades/:id', component: DetalleNovedadComponent, canActivate:[AuthGuard]},
+  {path: 'novedades/form/:aprendizId', component: NovedadesComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
