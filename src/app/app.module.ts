@@ -22,6 +22,7 @@ import { DetalleNovedadComponent } from './novedades/detalle-novedad.component';
 import { NovedadesComponent } from './novedades/novedades.component';
 import { LoginComponent } from './usuarios/login/login.component';
 import { AuthGuard } from './usuarios/guards/auth.guard';
+import { RoleGuard } from './usuarios/guards/role.guard';
 
 
 
@@ -33,12 +34,12 @@ const routes: Routes =[
   {path: 'login', component: LoginComponent},
   {path: 'aprendices', component: AprendicesComponent, canActivate:[AuthGuard]},
   {path: 'aprendices/page/:page', component: AprendicesComponent, canActivate:[AuthGuard]},
-  {path: 'usuarios', component: UsuariosComponent, canActivate:[AuthGuard]},
-  {path: 'usuarios/page/:page', component: UsuariosComponent, canActivate:[AuthGuard]},
+  {path: 'usuarios', component: UsuariosComponent, canActivate:[AuthGuard, RoleGuard], data: {role:'ROLE_ADMIN'}},
+  {path: 'usuarios/page/:page', component: UsuariosComponent, canActivate:[AuthGuard, RoleGuard], data: {role:'ROLE_ADMIN'}},
   {path: 'aprendices/form', component: FormComponent, canActivate:[AuthGuard]},
   {path: 'aprendices/form/:id', component: FormComponent, canActivate:[AuthGuard]},
-  {path: 'usuarios/formulario', component: FormularioComponent, canActivate:[AuthGuard]},
-  {path: 'usuarios/formulario/:id', component: FormularioComponent, canActivate:[AuthGuard]},
+  {path: 'usuarios/formulario', component: FormularioComponent, canActivate:[AuthGuard, RoleGuard], data: {role:'ROLE_ADMIN'}},
+  {path: 'usuarios/formulario/:id', component: FormularioComponent, canActivate:[AuthGuard, RoleGuard], data: {role:'ROLE_ADMIN'}},
   {path: 'novedades/:id', component: DetalleNovedadComponent, canActivate:[AuthGuard]},
   {path: 'novedades/form/:aprendizId', component: NovedadesComponent, canActivate:[AuthGuard]},
 ];
