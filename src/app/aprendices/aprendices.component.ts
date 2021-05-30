@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
-import { TokenService } from '../token/token.service';
 import { Aprendiz } from './aprendiz';
 import { AprendizService } from './aprendiz.service';
 import { ModalService } from './detalle/modal.service';
@@ -12,26 +11,19 @@ import { ModalService } from './detalle/modal.service';
   styleUrls: ['./aprendices.component.css'],
 })
 export class AprendicesComponent implements OnInit {
+
   aprendices: Aprendiz[];
   paginador: any;
   aprendizSeleccionado: Aprendiz;
   buscarAprendiz: Aprendiz;
   roles: string[];
-  isAdmin = false;
+
 
   constructor(private aprendizService: AprendizService,
     private activatedRoute: ActivatedRoute,
-    private modalService: ModalService,
-    private tokenService: TokenService) {}
+    private modalService: ModalService,) {}
 
   ngOnInit() {
-    this.roles = this.tokenService.getAuthorities();
-    this.roles.forEach(rol => {
-      if (rol === 'ROLE_ADMIN') {
-        this.isAdmin = true;
-      }
-    });
-
     this.activatedRoute.paramMap.subscribe(params =>{
       let page: number = +params.get('page');
 

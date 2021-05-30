@@ -20,10 +20,7 @@ import { DetalleComponent } from './aprendices/detalle/detalle.component';
 import { DetalleUserComponent } from './usuarios/detalleUser/detalleUser.component';
 import { DetalleNovedadComponent } from './novedades/detalle-novedad.component';
 import { NovedadesComponent } from './novedades/novedades.component';
-import { LoginComponent } from './auth/login.component';
-import { RegistroComponent } from './auth/registro.component';
-import { interceptorProvider } from './interceptors/prod-interceptor.service';
-import { ProdGuardService as guard} from './guards/prod-guard.service';
+
 
 
 
@@ -31,18 +28,16 @@ registerLocaleData(LocalES, 'es');
 
 const routes: Routes =[
   {path: '', redirectTo: 'login', pathMatch: 'full'},
-  {path: 'login', component: LoginComponent},
-  {path: 'registro', component: RegistroComponent},
-  {path: 'aprendices', component: AprendicesComponent, canActivate: [guard], data: {expectedRol:['admin', 'user']}},
-  {path: 'aprendices/page/:page', component: AprendicesComponent, canActivate: [guard], data: {expectedRol:['admin', 'user']}},
-  {path: 'usuarios', component: UsuariosComponent, canActivate: [guard], data: {expectedRol:['admin']}},
-  {path: 'usuarios/page/:page', component: UsuariosComponent, canActivate: [guard], data: {expectedRol:['admin']}},
-  {path: 'aprendices/form', component: FormComponent, canActivate: [guard], data: {expectedRol:['admin', 'user']}},
-  {path: 'aprendices/form/:id', component: FormComponent, canActivate: [guard], data: {expectedRol:['admin', 'user']}},
-  {path: 'usuarios/formulario', component: FormularioComponent, canActivate: [guard], data: {expectedRol:['admin']}},
-  {path: 'usuarios/formulario/:id', component: FormularioComponent, canActivate: [guard], data: {expectedRol:['admin']}},
-  {path: 'novedades/:id', component: DetalleNovedadComponent, canActivate: [guard], data: {expectedRol:['admin', 'user']}},
-  {path: 'novedades/form/:aprendizId', component: NovedadesComponent, canActivate: [guard], data: {expectedRol:['admin', 'user']}},
+  {path: 'aprendices', component: AprendicesComponent},
+  {path: 'aprendices/page/:page', component: AprendicesComponent},
+  {path: 'usuarios', component: UsuariosComponent},
+  {path: 'usuarios/page/:page', component: UsuariosComponent},
+  {path: 'aprendices/form', component: FormComponent},
+  {path: 'aprendices/form/:id', component: FormComponent},
+  {path: 'usuarios/formulario', component: FormularioComponent},
+  {path: 'usuarios/formulario/:id', component: FormularioComponent},
+  {path: 'novedades/:id', component: DetalleNovedadComponent},
+  {path: 'novedades/form/:aprendizId', component: NovedadesComponent},
 ];
 
 @NgModule({
@@ -60,8 +55,7 @@ const routes: Routes =[
     DetalleUserComponent,
     DetalleNovedadComponent,
     NovedadesComponent,
-    LoginComponent,
-    RegistroComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -70,7 +64,6 @@ const routes: Routes =[
     RouterModule.forRoot(routes)
   ],
   providers: [AprendizService,
-    interceptorProvider, 
     { provide: LOCALE_ID, useValue: 'es' },
   ],
   bootstrap: [AppComponent]

@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of, throwError } from 'rxjs';
-import { APRENDICES } from './aprendices.json';
 import { Aprendiz } from './aprendiz';
 import { catchError, map, tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
