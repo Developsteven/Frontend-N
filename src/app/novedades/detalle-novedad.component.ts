@@ -11,7 +11,7 @@ import { NovedadService } from './novedad.service';
 export class DetalleNovedadComponent implements OnInit {
 
 novedad: Novedad;
-titulo: string = 'Novedad';
+titulo: string = 'Detalle de la Novedad';
 
   constructor(private novedadService: NovedadService, 
     private activatedRouter: ActivatedRoute) { }
