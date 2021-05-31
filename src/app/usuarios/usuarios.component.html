@@ -7,10 +7,10 @@
       <div class="card-header text-primary"><h5 class="card-title">Listado Usuarios</h5></div>
       <div class="card-body text-primary">
 
-        <!-- <div class="my-3 text-left">
+        <div class="my-3 text-left">
           <button class="btn btn-rounded btn-primary" type="button" [routerLink]="['/usuarios/formulario']">Crear
             Usuario</button>
-        </div> -->
+        </div>
 
         <div *ngIf="usuarios?.length == 0" class="alert alert-info">
           No hay registros en la base de datos.
@@ -23,7 +23,7 @@
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Email</th>
-              <th>Nombre Usuario</th>
+              <th>Rol</th>
               <th>editar</th>
             </tr>
           </thead>
@@ -32,8 +32,8 @@
               <td><button (click)="abrirModal(usuario)" class="btn btn-success">ver</button></td>
               <td>{{usuario.nombre}}</td>
               <td>{{usuario.apellido}}</td>
-              <td>{{usuario.email}}</td>
-              <td>{{usuario.nombreUsuario}}</td>
+              <td>{{usuario.mail}}</td>
+              <td>{{usuario.rol.nombre}}</td>
               <td><button type="button" [routerLink]="['/usuarios/formulario', usuario.id]"
                   class="btn btn-primary">Editar</button></td>
             </tr>

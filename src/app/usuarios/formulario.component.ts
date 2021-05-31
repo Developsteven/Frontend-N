@@ -36,6 +36,20 @@ export class FormularioComponent implements OnInit {
     });
   }
 
+  public create(): void{
+    this.usuarioService.create(this.usuario).subscribe(
+      usuario => {
+        this.router.navigate(['/usuarios'])
+        Swal.fire('Nuevo usuario', `Usuario ${usuario.nombre} creado con exito!`, 'success')
+      },
+      (err) => {
+        this.errores = err.error.errors as string[];
+        console.error('El codigo del error desde el backend: ' + err.status);
+        console.error(err.error.errors);
+      }
+    )
+  }
+
 
   update(): void{
     this.usuarioService.update(this.usuario).subscribe( usuario => {

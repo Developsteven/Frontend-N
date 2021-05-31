@@ -50,7 +50,7 @@
       <div class="form-group row mb-2" *ngIf="novedad.aprendiz">
         <label for="usuario" class="col-sm-2 col-form-label">Usuario</label>
         <div class="col-sm-6">
-          <input type="text" class="form-control" value="{{nombreUsuario}}"
+          <input type="text" class="form-control" value="{{authService.usuario.nombre}} {{authService.usuario.apellido}}"
             name="usuario" disabled />
         </div>
       </div>

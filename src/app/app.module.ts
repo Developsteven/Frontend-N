@@ -7,7 +7,7 @@ import { HeaderComponent} from './header/header.component';
 import { AprendicesComponent } from './aprendices/aprendices.component';
 import { AprendizService } from './aprendices/aprendiz.service';
 import { RouterModule, Routes } from '@angular/router';
-import { HttpClientModule,} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS,} from '@angular/common/http';
 import { FormComponent } from './aprendices/form.component';
 import { FormsModule } from '@angular/forms';
 import { FormularioComponent } from './usuarios/formulario.component';
@@ -23,7 +23,7 @@ import { NovedadesComponent } from './novedades/novedades.component';
 import { LoginComponent } from './usuarios/login/login.component';
 import { AuthGuard } from './usuarios/guards/auth.guard';
 import { RoleGuard } from './usuarios/guards/role.guard';
-
+import { TokenInterceptor }from './usuarios/interceptors/token.interceptor';
 
 
 
@@ -70,6 +70,7 @@ const routes: Routes =[
   ],
   providers: [AprendizService,
     { provide: LOCALE_ID, useValue: 'es' },
+    { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })

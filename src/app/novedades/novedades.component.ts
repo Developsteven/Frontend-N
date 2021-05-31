@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { AprendizService } from '../aprendices/aprendiz.service';
+import { AuthService } from '../usuarios/auth.service';
 import { Usuario } from '../usuarios/usuario';
+import { UsuarioService } from '../usuarios/usuario.service';
 import { Novedad } from './novedad';
 import { NovedadService } from './novedad.service';
 import { TipoNovedad } from './tipo-novedad';
@@ -23,7 +25,9 @@ export class NovedadesComponent implements OnInit {
 
   constructor(private aprendizService: AprendizService,
     private activateRoute: ActivatedRoute,
+    private usuarioService: UsuarioService,
     private router: Router,
+    public authService: AuthService,
     private novedadService: NovedadService,
   ) { }
 
@@ -31,14 +35,18 @@ export class NovedadesComponent implements OnInit {
     this.activateRoute.paramMap.subscribe(params => {
       let aprendizId = +params.get('aprendizId');
       this.aprendizService.getAprendiz(aprendizId).subscribe(aprendiz => this.novedad.aprendiz = aprendiz);
-      
+      let username = this.authService.usuario.nombre;
+    console.log(username);
+    this.usuarioService.getUsuario(username).subscribe(aprendiz => this.novedad.usuario = aprendiz);
     })
     this.novedadService.getTipoNovedad().subscribe(tipoNovedades => this.tipoNovedades = tipoNovedades);
-
+    
   }
 
   create(novedadForm): void{
-
+    let username = this.authService.usuario.nombre;
+    console.log(username);
+    this.usuarioService.getUsuario(username).subscribe(aprendiz => this.novedad.usuario = aprendiz);
     if(novedadForm.form.valid){
       
       this.novedadService.create(this.novedad).subscribe((novedad) => {
