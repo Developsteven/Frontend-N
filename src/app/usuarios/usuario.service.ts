@@ -6,6 +6,7 @@ import { catchError, map, tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { Rol } from './rol';
+import { Cargo } from './cargo';
 
 @Injectable({
   providedIn: 'root',
@@ -16,6 +17,10 @@ export class UsuarioService {
   private httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json' });
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  getCargo(): Observable<Cargo[]>{
+    return this.http.get<Cargo[]>(this.urlEndpoint + '/cargo');
+  }
 
   getRol():Observable<Rol[]>{
     return this.http.get<Rol[]>(this.urlEndpoint + '/rol');

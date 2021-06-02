@@ -17,6 +17,18 @@
             <form #usuarioForm="ngForm">
 
               <div class="form-group-row">
+                <label for="numero" class="col-form-label col-sm">Numero de documento</label>
+                <div class="col">
+                  <input type="text" class="form-control" [(ngModel)]="usuario.numero" name="numero" #numero="ngModel">
+                  <div class="alert alert-danger" *ngIf="numero.invalid && (numero.dirty || numero.touched)">
+                    <div *ngIf="numero.errors.required">
+                      Numero de cocumento es requerido
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group-row">
                 <label for="nombre" class="col-form-label col-sm">Nombre</label>
                 <div class="col">
                   <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="nombre" #nombre="ngModel">
@@ -41,6 +53,19 @@
                       Apellido es requerido
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <div class="form-group-row">
+                <label for="cargo" class="col-form-label col-sm">Cargo</label>
+                <div class="col-sm-6">
+                  <select [compareWith]="compararCargo" class="form-select "
+                    [(ngModel)]="usuario.cargo" name="cargo" style="width: 500px;">
+                    <option [ngValue]="undefined">--- seleccionar un cargo ---</option>
+                    <option *ngFor="let cargo of cargo" [ngValue]="cargo">
+                      {{cargo.nombre}}
+                    </option>
+                  </select>
                 </div>
               </div>
 
