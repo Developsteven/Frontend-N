@@ -14,16 +14,16 @@
                   <ul *ngIf="usuario" class="list-group text-dark mb-3">
                     <li class="list-group-item active"><h6>Nombre: </h6>{{usuario.nombre}}</li>
                     <li class="list-group-item"><h6>Apellido: </h6>{{usuario.apellido}}</li>
+                    <li class="list-group-item"><h6>N° Documento: </h6>{{usuario.numero}}</li>
                     <li class="list-group-item"><h6>Email: </h6>{{usuario.mail}}</li>
-                    <!-- <li class="list-group-item"><h6>Rol: </h6>{{rol.nombre}}</li> -->
+                    <li class="list-group-item"><h6>Cargo: </h6>{{usuario.cargo.nombre}}</li> 
                   </ul>
-  
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button (click)="cerrarModal()" type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button (click)="cerrarModal()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

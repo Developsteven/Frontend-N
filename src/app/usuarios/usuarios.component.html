@@ -20,20 +20,22 @@
           <thead>
             <tr>
               <th></th>
+              <th>N° Documento</th>
               <th>Nombre</th>
               <th>Apellido</th>
               <th>Email</th>
-              <th>Rol</th>
-              <th>editar</th>
+              <th>Cargo</th>
+              <th>Editar</th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let usuario of usuarios">
               <td><button (click)="abrirModal(usuario)" class="btn btn-success">ver</button></td>
+              <td>{{usuario.numero}}</td>
               <td>{{usuario.nombre}}</td>
               <td>{{usuario.apellido}}</td>
               <td>{{usuario.mail}}</td>
-              <td>{{usuario.rol.nombre}}</td>
+              <td>{{usuario.cargo.nombre}}</td>
               <td><button type="button" [routerLink]="['/usuarios/formulario', usuario.id]"
                   class="btn btn-primary">Editar</button></td>
             </tr>
