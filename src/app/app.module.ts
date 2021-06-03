@@ -25,6 +25,7 @@ import { AuthGuard } from './usuarios/guards/auth.guard';
 import { RoleGuard } from './usuarios/guards/role.guard';
 import { TokenInterceptor }from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor }from './usuarios/interceptors/auth.interceptor';
+import { RegistroComponent } from './usuarios/login/registro.component';
 
 
 
@@ -33,6 +34,7 @@ registerLocaleData(LocalES, 'es');
 const routes: Routes =[
   {path: '', redirectTo: 'login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
+  {path: 'registro', component: RegistroComponent},
   {path: 'aprendices', component: AprendicesComponent, canActivate:[AuthGuard]},
   {path: 'aprendices/page/:page', component: AprendicesComponent, canActivate:[AuthGuard]},
   {path: 'usuarios', component: UsuariosComponent, canActivate:[AuthGuard, RoleGuard], data: {role:'ROLE_ADMIN'}},
@@ -61,6 +63,7 @@ const routes: Routes =[
     DetalleNovedadComponent,
     NovedadesComponent,
     LoginComponent,
+    RegistroComponent,
 
   ],
   imports: [

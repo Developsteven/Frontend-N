@@ -50,9 +50,7 @@
 
                 <thead>
                   <tr>
-                    <!-- <th>#</th> -->
                     <th>Titulo</th>
-                    <!-- <th>descripcion</th> -->
                     <th>Tipo Novedad</th>
                     <th>Fecha</th>
                     <th>Detalle</th>
@@ -61,9 +59,7 @@
 
                 <tbody>
                   <tr *ngFor="let novedad of aprendiz.novedades">
-                    <!-- <td>{{novedad.id}}</td> -->
                     <td>{{novedad.titulo}}</td>
-                    <!-- <td>{{novedad.descripcion}}</td> -->
                     <td>{{novedad.tipoNovedad.nombre}}</td>
                     <td>{{novedad.fecha}}</td>
                     <td><button class="btn btn-primary btn-sm" type="button"

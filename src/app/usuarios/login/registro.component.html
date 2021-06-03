@@ -1,0 +1,119 @@
+<div class="container d-flex justify-content-center mt-5">
+    <div class="card ">
+      <div class="card-header">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/login">Iniciar Sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/usuarios/formulario']" type="button">Crear Cuenta</a>
+          </li>
+
+        </ul>
+      </div>
+      <div class="card-body ">
+        
+        <form #usuarioForm="ngForm">
+  
+            <div class="form-group">
+              <label for="numero" class="col-form-label">Numero de documento</label>
+              <div class="col">
+                <input type="text" class="form-control" [(ngModel)]="usuario.numero" name="numero" #numero="ngModel">
+                <div class="alert alert-danger" *ngIf="numero.invalid && (numero.dirty || numero.touched)">
+                  <div *ngIf="numero.errors.required">
+                    Numero de cocumento es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="nombre" class="col-form-label">Nombre</label>
+              <div class="col">
+                <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="nombre" #nombre="ngModel">
+                <div class="alert alert-danger" *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)">
+                  <div *ngIf="nombre.errors.required">
+                    Nombre es requerido
+                  </div>
+                  <div *ngIf="nombre.errors.minlength">
+                    Nombre debe tener al menos 4 caracteres
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="apellido" class="col-form-label">Apellido</label>
+              <div class="col">
+                <input type="text" class="form-control" [(ngModel)]="usuario.apellido" name="apellido"
+                  #apellido="ngModel">
+                <div class="alert alert-danger" *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)">
+                  <div *ngIf="apellido.errors.required">
+                    Apellido es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cargo" class="col-form-label">Cargo</label>
+              <div class="col-sm-6">
+                <select [compareWith]="compararCargo" class="form-select "
+                  [(ngModel)]="usuario.cargo" name="cargos" style="width: 250px;">
+                  <option [ngValue]="undefined">--- seleccionar un cargo ---</option>
+                  <option *ngFor="let cargo of cargos" [ngValue]="cargo">
+                    {{cargo.nombre}}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mail" class="col-form-label">Email</label>
+              <div class="col">
+                <input type="mail" class="form-control" [(ngModel)]="usuario.mail" name="mail" #mail='ngModel'>
+                <div class="alert alert-danger" *ngIf="mail.invalid && (mail.dirty || mail.touched)">
+                  <div *ngIf="mail.errors.required">
+                    Email es requerido
+                  </div>
+                  <div *ngIf="mail.errors.mail">
+                    Email debe tener un formato valido
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="col-form-label">Password</label>
+              <div class="col">
+                <input type="password" class="form-control" [(ngModel)]="usuario.password" name="password"
+                  #password='ngModel'>
+                <div class="alert alert-danger" *ngIf="password.invalid && (password.dirty || password.touched)">
+                  <div *ngIf="password.errors.required">
+                    Password es requerido
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            
+
+            <ul class="alert alert-danger" *ngIf="errores?.length > 0">
+                <li *ngFor="let err of errores">
+                  {{ err }}
+                </li>
+              </ul>
+
+              <div class="form-group row mt-4 text-center">
+                <div class="col">
+                  <button class="btn btn-success" role="button" (click)="create()" 
+                    [disabled]="!usuarioForm.form.valid">Crear</button>
+  
+                </div>
+              </div>
+          </form>
+
+      </div>
+    </div>
+  </div>
+

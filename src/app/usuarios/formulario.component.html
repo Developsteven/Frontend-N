@@ -97,19 +97,6 @@
                 </div>
               </div>
 
-              <!-- <div class="form-group-row">
-                <label for="nombreUsuario" class="col-form-label col-sm-2">Rol</label>
-                <div class="col">
-                  <input type="nombreUsuario" class="form-control" [(ngModel)]="usuario.nombreUsuario" name="nombreUsuario"
-                    #nombreUsuario='ngModel'>
-                  <div class="alert alert-danger" *ngIf="nombreUsuario.invalid && (nombreUsuario.dirty || nombreUsuario.touched)">
-                    <div *ngIf="nombreUsuario.errors.required">
-                      Password es requerido
-                    </div>
-                  </div>
-                </div>
-              </div> -->
-
               <div class="form-group row mt-4">
                 <div class="col">
                   <button class="btn btn-primary" role="button" (click)="create()" *ngIf="!usuario.id else elseBlock"
