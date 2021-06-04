@@ -34,7 +34,7 @@ export class AprendizService {
     return this.http.get(this.urlEndpoint + '/page/' + page).pipe(
       tap((response: any) => {
         (response.content as Aprendiz[]).forEach((aprendiz) => {
-          console.log(aprendiz.nombre);
+          //console.log(aprendiz.nombre);
         });
       }),
       map((response: any) => {
@@ -47,7 +47,7 @@ export class AprendizService {
       }),
       tap((response) => {
         (response.content as Aprendiz[]).forEach((aprendiz) => {
-          console.log(aprendiz.nombre);
+          //console.log(aprendiz.nombre);
         });
       })
     );
@@ -97,15 +97,19 @@ export class AprendizService {
       );
   }
 
-  getDocumento(aprendiz): Observable<Aprendiz>{
-    return this.http.get<Aprendiz>(`${this.urlEndpoint}+ '/documento' + ${aprendiz}`).pipe(
+  getDocumento(aprendiz: Aprendiz): Observable<Aprendiz>{
+
+    let params = new URLSearchParams();
+    params.set('documento', aprendiz.documento);
+    console.log(params.toString());
+    return this.http.get<Aprendiz>(`${this.urlEndpoint}+ '/documento' + ${params}`).pipe(
       catchError((e) => {
         if (e.status != 401 && e.error.mensaje) {
-          this.router.navigate(['/aprendices']);
+          //this.router.navigate(['/aprendices']);
           console.error(e.error.mensaje);
         }
         return throwError(e);
-      })
+      }) 
     );
   }
 }

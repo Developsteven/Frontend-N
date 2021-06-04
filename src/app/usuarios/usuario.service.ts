@@ -58,6 +58,9 @@ export class UsuarioService {
           if (e.status == 400) {
             return throwError(e);
           }
+          if(e.status == 200){
+            Swal.fire('Error login', 'Email ya existe!', 'error');
+          }
           if(e.error.mensaje){
           console.error(e.error.mensaje);
         }

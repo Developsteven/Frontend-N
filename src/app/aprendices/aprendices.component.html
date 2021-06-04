@@ -22,15 +22,13 @@
           <div class="col-auto">
             <form class="row g-3">
               <div class="col-auto">
-                <label class="visually-hidden">Documento</label>
-                <input type="text" readonly class="form-control-plaintext" value="Numero de Documento">
+                <label class="form-label">Documento</label>
               </div>
               <div class="col-auto">
-                <label class="visually-hidden">Password</label>
-                <input type="text" class="form-control" id="inputPassword2" placeholder="Documento">
+                <input type="text" class="form-control" id="documento" name="documento" [(ngModel)]="aprendiz.documento" placeholder="Documento" required>
               </div>
               <div class="col-auto">
-                <button type="submit"  class="btn btn-success mb-3">Buscar</button> 
+                <button type="submit"  class="btn btn-success mb-3" (click)="buscar()">Buscar</button> 
               </div>
             </form>
           </div>

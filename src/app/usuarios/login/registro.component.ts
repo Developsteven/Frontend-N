@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 import Swal from 'sweetalert2';
 import { Cargo } from '../cargo';
 import { Usuario } from '../usuario';
@@ -27,16 +28,21 @@ export class RegistroComponent implements OnInit {
   public create(): void{
     this.usuarioService.create(this.usuario).subscribe(
       usuario => {
+        
         this.router.navigate(['/login'])
-        Swal.fire('Nuevo usuario', `Usuario ${usuario.nombre} creado con exito!`, 'success')
+        Swal.fire('Nuevo usuario', `Usuario  creado con exito!`, 'success') /* ${usuario.nombre} */
       },
       (err) => {
+        if(err.status == 200){
+          Swal.fire('Error login', 'Email ya existe!', 'error');
+        }
         this.errores = err.error.errors as string[];
         console.error('El codigo del error desde el backend: ' + err.status);
         console.error(err.error.errors);
       }
     )
   }
+
   compararCargo(o1:Cargo, o2:Cargo): boolean {
     if(o1 === undefined && o2 === undefined){
       return true;
