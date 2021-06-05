@@ -39,7 +39,7 @@ export class FormularioComponent implements OnInit {
     });
   }
 
-  public create(): void{
+  /* public create(): void{
     this.usuarioService.create(this.usuario).subscribe(
       usuario => {
         this.router.navigate(['/usuarios'])
@@ -51,7 +51,7 @@ export class FormularioComponent implements OnInit {
         console.error(err.error.errors);
       }
     )
-  }
+  } */
 
 
   update(): void{

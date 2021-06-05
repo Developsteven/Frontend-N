@@ -33,7 +33,7 @@ export class UsuarioService {
       tap((response: any) => {
 
         (response.content as Usuario[]).forEach((usuario) => {
-          console.log(usuario.nombre);
+          //console.log(usuario.nombre);
         })
       }),
       map((response: any) => {
@@ -45,7 +45,7 @@ export class UsuarioService {
       }),
       tap(response => {
         (response.content as Usuario[]).forEach((usuario)  => {
-          console.log(usuario.nombre);
+          //console.log(usuario.nombre);
         });
       }));
   }
@@ -58,11 +58,8 @@ export class UsuarioService {
           if (e.status == 400) {
             return throwError(e);
           }
-          if(e.status == 200){
-            Swal.fire('Error login', 'Email ya existe!', 'error');
-          }
-          if(e.error.mensaje){
-          console.error(e.error.mensaje);
+          if(e.error.response){
+          console.error(e.error.response);
         }
           return throwError(e);
         }));

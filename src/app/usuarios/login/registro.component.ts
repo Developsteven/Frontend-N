@@ -27,17 +27,14 @@ export class RegistroComponent implements OnInit {
 
   public create(): void{
     this.usuarioService.create(this.usuario).subscribe(
-      usuario => {
-        
+      (usuario) => {
         this.router.navigate(['/login'])
-        Swal.fire('Nuevo usuario', `Usuario  creado con exito!`, 'success') /* ${usuario.nombre} */
+        Swal.fire('Nuevo usuario', `Usuario creado con exito!`, 'success') /* ${usuario.nombre} */
       },
       (err) => {
-        if(err.status == 200){
-          Swal.fire('Error login', 'Email ya existe!', 'error');
-        }
         this.errores = err.error.errors as string[];
         console.error('El codigo del error desde el backend: ' + err.status);
+        Swal.fire('Error', 'Email o Documento ya existe!', 'error');
         console.error(err.error.errors);
       }
     )

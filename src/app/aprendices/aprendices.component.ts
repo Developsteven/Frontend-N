@@ -40,7 +40,7 @@ export class AprendicesComponent implements OnInit {
         .pipe(
           tap((response) => {
             (response.content as Aprendiz[]).forEach((aprendiz) => {
-              console.log(aprendiz.nombre);
+              //console.log(aprendiz.nombre);
             });
           })
         )

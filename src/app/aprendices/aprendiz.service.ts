@@ -62,6 +62,7 @@ export class AprendizService {
         }
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
+          Swal.fire('Error', 'Email ya existe!', 'error');
         }
         return throwError(e);
       })
