@@ -98,12 +98,13 @@ export class AprendizService {
       );
   }
 
-  getDocumento(aprendiz: Aprendiz): Observable<Aprendiz>{
+  getDocumento(aprendiz): Observable<any>{
 
     let params = new URLSearchParams();
     params.set('documento', aprendiz.documento);
-    console.log(params.toString());
-    return this.http.get<Aprendiz>(`${this.urlEndpoint}+ '/documento' + ${params}`).pipe(
+    let term = params.toString();
+    console.log(term);
+    return this.http.get<any>(`${this.urlEndpoint}+ '/documento/' + ${term}`).pipe(
       catchError((e) => {
         if (e.status != 401 && e.error.mensaje) {
           //this.router.navigate(['/aprendices']);

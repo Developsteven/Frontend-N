@@ -10,18 +10,19 @@
   
       <ul class="list-group my-2">
         <li class="list-group-item list-group-item-primary">Datos del aprendiz</li>
-        <li class="list-group-item ">{{novedad.aprendiz.nombre}} {{novedad.aprendiz.apellido}}</li>
-        <li class="list-group-item ">{{novedad.aprendiz.tipoDocumento.nombre}} {{novedad.aprendiz.documento}}</li>
-        <li class="list-group-item ">{{novedad.aprendiz.mail}}</li>
-        <li class="list-group-item ">{{novedad.aprendiz.ficha.nombre}}</li>
+        <li class="list-group-item ">Nombre: {{novedad.aprendiz.nombre}} {{novedad.aprendiz.apellido}}</li>
+        <li class="list-group-item ">{{novedad.aprendiz.tipoDocumento.nombre}} N° {{novedad.aprendiz.documento}}</li>
+        <li class="list-group-item ">Correo: {{novedad.aprendiz.mail}}</li>
+        <li class="list-group-item ">Programa: {{novedad.aprendiz.ficha.nombre}}</li>
+        <li class="list-group-item ">Ficha: {{novedad.aprendiz.ficha.numero}}</li>
         <li class="list-group-item ">{{novedad.aprendiz.trimestre.nombre}}</li>
       </ul>
 
       <ul class="list-group my-2">
         <li class="list-group-item list-group-item-primary">Datos del Instructor ó Administrativo</li>
-        <li class="list-group-item ">{{novedad.usuario.nombre}} {{novedad.usuario.apellido}}</li>
-        <li class="list-group-item ">{{novedad.usuario.mail}}</li>
-        <li class="list-group-item ">{{novedad.usuario.cargo.nombre}}</li>
+        <li class="list-group-item ">Nombre: {{novedad.usuario.nombre}} {{novedad.usuario.apellido}}</li>
+        <li class="list-group-item ">Correo: {{novedad.usuario.mail}}</li>
+        <li class="list-group-item ">Cargo: {{novedad.usuario.cargo.nombre}}</li>
         
       </ul>
   

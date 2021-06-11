@@ -45,7 +45,7 @@ export class LoginComponent implements OnInit {
       Swal.fire('Login', `Hola ${usuario.nombre}, has iniciado sesion con exito!`, 'success');
     }, err => {
       if (err.status == 400){
-        Swal.fire('Error login', 'Email o clave incorrectas!', 'error');
+        Swal.fire('Error login', 'Email o password incorrectas!', 'error');
       }
     }
     );

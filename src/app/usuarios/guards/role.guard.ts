@@ -21,7 +21,7 @@ export class RoleGuard implements CanActivate {
       }
 
       let role = route.data['role'] as string;
-      console.log(role);
+      //console.log(role);
       if(this.authService.hasRole(role)){
         return true;
       }

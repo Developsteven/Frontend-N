@@ -22,8 +22,12 @@ export class UsuarioService {
     return this.http.get<Cargo[]>(this.urlEndpoint + '/cargo');
   }
 
-  getRol():Observable<Rol[]>{
+  /* getRol():Observable<Rol[]>{
     return this.http.get<Rol[]>(this.urlEndpoint + '/rol');
+  } */
+
+  getRol():Observable<Rol[]>{
+    return this.http.get(this.urlEndpoint).pipe(map(response => response as Rol[]))
   }
 
   getUsuarios(page: number): Observable<any> {

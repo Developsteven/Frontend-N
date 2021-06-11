@@ -37,7 +37,7 @@ export class NovedadesComponent implements OnInit {
       this.aprendizService.getAprendiz(aprendizId).subscribe(aprendiz => this.novedad.aprendiz = aprendiz);
       let username = this.authService.usuario.id;
       this.usuarioService.getUsuario(username).subscribe(usuario => this.novedad.usuario = usuario);
-      console.log(username);
+      //console.log(username);
     })
     this.novedadService.getTipoNovedad().subscribe(tipoNovedades => this.tipoNovedades = tipoNovedades);
     
