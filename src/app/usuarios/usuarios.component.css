@@ -1,0 +1,13 @@
+.colortabla{
+    background-color: #1CA2A2;
+    color: white;
+    /* background-color: #E5E5E5; */
+}
+.btnVerde{
+    /* background-color: #30A439; */
+    background-color: #38A540;
+    color: white;
+}
+.btnVerde:hover{
+    background-color: #26B431;
+}
