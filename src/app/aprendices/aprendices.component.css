@@ -1,0 +1,30 @@
+.colortabla{
+    background-color: #1CA2A2;
+    color: white;
+    /* background-color: #E5E5E5; */
+}
+.btnColor{
+    /* background-color: #e66b59; */
+   /*  color: white; */
+    /* background-color: #D0D3D4; */
+    /* border-color: #566573; */
+    border-color:#2363F8;
+}
+.btnNaranja{
+    background-color: #F5520B;
+    color: white;
+}
+.btnColor:hover{
+    /* background-color: #E5E8E8; */
+    /* background-color: #5D6D7E; */
+    background-color: #2363F8;
+    color: white;
+}
+.btnVerde{
+    /* background-color: #30A439; */
+    background-color: #38A540;
+    color: white;
+}
+.btnVerde:hover{
+    background-color: #26B431;
+}
