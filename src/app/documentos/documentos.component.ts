@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DocumentosComponent implements OnInit {
 
+  title: string = "DOCUMENTOS";
+  info: string = "Aca encontraras el formato relacionado  que se utiliza para las siquientes novedades"
   constructor() { }
 
   ngOnInit(): void {
