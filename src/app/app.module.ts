@@ -26,6 +26,7 @@ import { RoleGuard } from './usuarios/guards/role.guard';
 import { TokenInterceptor }from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor }from './usuarios/interceptors/auth.interceptor';
 import { RegistroComponent } from './usuarios/login/registro.component';
+import { DocumentosComponent } from './documentos/documentos.component';
 
 
 
@@ -45,6 +46,7 @@ const routes: Routes =[
   {path: 'usuarios/formulario/:id', component: FormularioComponent, canActivate:[AuthGuard, RoleGuard], data: {role:'ROLE_ADMIN'}},
   {path: 'novedades/:id', component: DetalleNovedadComponent, canActivate:[AuthGuard]},
   {path: 'novedades/form/:aprendizId', component: NovedadesComponent, canActivate:[AuthGuard]},
+  {path: 'documentos', component: DocumentosComponent, canActivate:[AuthGuard]},
 ];
 
 @NgModule({
@@ -64,6 +66,7 @@ const routes: Routes =[
     NovedadesComponent,
     LoginComponent,
     RegistroComponent,
+    DocumentosComponent,
 
   ],
   imports: [

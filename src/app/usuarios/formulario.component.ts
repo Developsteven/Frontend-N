@@ -17,6 +17,7 @@ export class FormularioComponent implements OnInit {
   public titulo: string = "Crear Usuario"; 
   public errores: string[];
   public cargo: Cargo[];
+  roles: Rol[];
 /*   roles: Rol[]; */
 
 
@@ -27,6 +28,7 @@ export class FormularioComponent implements OnInit {
   ngOnInit(): void {
     this.cargarUsuario();
     this.usuarioService.getCargo().subscribe(cargo => this.cargo = cargo);
+    this.usuarioService.getRol().subscribe(rol => this.roles = rol);
     /* this.usuarioService.getRol().subscribe(roles => this.roles = roles); */
   }
 
