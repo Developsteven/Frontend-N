@@ -25,20 +25,34 @@ export class RegistroComponent implements OnInit {
     this.usuarioService.getCargo().subscribe(cargo => this.cargos = cargo);
   }
 
-  public create(): void{
+
+  public create(usuarioForm): void{
+    if(usuarioForm.form.valid){
+      this.usuarioService.create(this.usuario).subscribe(
+        (usuario) => {
+          this.router.navigate(['/login'])
+          Swal.fire('Nuevo usuario', `Usuario creado con exito!`, 'success') 
+    },(err) => {
+        Swal.fire('Error', 'Email o Documento ya existe!', 'error');
+      }
+    )
+    }
+  }
+
+  /* public create(): void{
     this.usuarioService.create(this.usuario).subscribe(
       (usuario) => {
         this.router.navigate(['/login'])
-        Swal.fire('Nuevo usuario', `Usuario creado con exito!`, 'success') /* ${usuario.nombre} */
+        Swal.fire('Nuevo usuario', `Usuario creado con exito!`, 'success') 
       },
       (err) => {
         this.errores = err.error.errors as string[];
         console.error('El codigo del error desde el backend: ' + err.status);
-        Swal.fire('Error', 'Email o Documento ya existe!', 'error');
+        //Swal.fire('Error', 'Email o Documento ya existe!', 'error');
         console.error(err.error.errors);
       }
     )
-  }
+  } */
 
   compararCargo(o1:Cargo, o2:Cargo): boolean {
     if(o1 === undefined && o2 === undefined){

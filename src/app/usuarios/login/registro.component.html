@@ -1,4 +1,4 @@
-<div class="container d-flex justify-content-center mt-5">
+<!-- <div class="container d-flex justify-content-center mt-5">
     <div class="card ">
       <div class="card-header">
         <ul class="nav nav-tabs">
@@ -115,5 +115,110 @@
 
       </div>
     </div>
-  </div>
+  </div> -->
 
+  <!--         diseñando otra forma      -->
+
+  <div class="container d-flex justify-content-center mt-5">
+    <div class="card ">
+      <div class="card-header">
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link " routerLink="/login">Iniciar Sesión</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" [routerLink]="['/usuarios/formulario']" type="button">Crear Cuenta</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="card-body ">
+        
+        <form #usuarioForm="ngForm">
+  
+            <div class="form-group">
+              <label for="numero" class="col-form-label">Numero de documento</label>
+              <div class="col">
+                <input type="text" class="form-control" [(ngModel)]="usuario.numero" name="numero" required #numero="ngModel">
+                <div class="alert alert-danger" *ngIf="numero.invalid && numero.touched || numero.invalid && usuarioForm.submitted">
+                    Numero de cocumento es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="nombre" class="col-form-label">Nombre</label>
+              <div class="col">
+                <input type="text" class="form-control" [(ngModel)]="usuario.nombre" name="nombre" required #nombre="ngModel">
+                <div class="alert alert-danger" *ngIf="nombre.invalid && nombre.touched || nombre.invalid && usuarioForm.submitted">
+                    Nombre es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="apellido" class="col-form-label">Apellido</label>
+              <div class="col">
+                <input type="text" class="form-control" [(ngModel)]="usuario.apellido" required name="apellido"
+                  #apellido="ngModel">
+                <div class="alert alert-danger" *ngIf="apellido.invalid && apellido.touched || apellido.invalid && usuarioForm.submitted">
+                    Apellido es requerido
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="cargo" class="col-form-label">Cargo</label>
+              <div class="col-sm-6">
+                <select [compareWith]="compararCargo" class="form-select "
+                  [(ngModel)]="usuario.cargo" required name="cargo" #cargo="ngModel" style="width: 250px;">
+                  <option [ngValue]="undefined">--- seleccionar un cargo ---</option>
+                  <option *ngFor="let cargo of cargos" [ngValue]="cargo">
+                    {{cargo.nombre}}
+                  </option>
+                </select>
+                <div class="alert alert-danger"
+                  *ngIf="cargo.invalid && usuarioForm.submitted">
+                   Cargo es requerido
+                 </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="mail" class="col-form-label">Email</label>
+              <div class="col">
+                <input type="mail" class="form-control" [(ngModel)]="usuario.mail" required name="mail" #mail='ngModel'>
+                <div class="alert alert-danger" *ngIf="mail.invalid && mail.touched || mail.invalid && usuarioForm.submitted">
+                  <div *ngIf="mail.errors.required">
+                    Email es requerido
+                  </div>
+                  <div *ngIf="mail.errors.mail">
+                    Email debe tener un formato valido
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="col-form-label">Password</label>
+              <div class="col">
+                <input type="password" class="form-control" [(ngModel)]="usuario.password" required name="password"
+                  #password='ngModel'>
+                <div class="alert alert-danger" *ngIf="password.invalid && password.touched || password.invalid && usuarioForm.submitted">
+                    Password es requerido
+                </div>
+              </div>
+            </div>
+
+              <div class="form-group row mt-4 text-center">
+                <div class="col">
+                  <button class="btn btn-success" role="button" (click)="create(usuarioForm)" 
+                    >Crear</button> <!-- [disabled]="!usuarioForm.form.valid" -->
+  
+                </div>
+              </div>
+          </form>
+
+      </div>
+    </div>
+  </div>
