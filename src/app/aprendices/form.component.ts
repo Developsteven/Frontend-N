@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 import { Aprendiz } from './aprendiz';
 import { AprendizService } from './aprendiz.service';
 import { Ficha } from './ficha';
+import { Programa } from './programa';
 import { TipoDocumento } from './tipoDocumento';
 import { Trimestre } from './trimestre';
 
@@ -19,6 +20,7 @@ export class FormComponent implements OnInit {
   tipoDocumentos: TipoDocumento[];
   fichas: Ficha[];
   trimestres: Trimestre[];
+  programas: Programa[];
 
   constructor(
     private aprendizService: AprendizService,
@@ -31,6 +33,7 @@ export class FormComponent implements OnInit {
     this.aprendizService.getTipoDocumento().subscribe(tipoDocumentos => this.tipoDocumentos = tipoDocumentos);
     this.aprendizService.getFichas().subscribe(fichas=> this.fichas = fichas);
     this.aprendizService.getTrimestre().subscribe(trimestres => this.trimestres = trimestres);
+    this.aprendizService.getProgramas().subscribe(programas => this.programas = programas);
   }
 
   caragrAprendiz(): void {
@@ -96,6 +99,13 @@ export class FormComponent implements OnInit {
 
 
   compararTrimestre(o1:Trimestre, o2:Trimestre): boolean {
+    if(o1 === undefined && o2 === undefined){
+      return true;
+    }
+    return o1 === null || o2 ===null || o1 === undefined || o2 ===undefined? false: o1.id===o2.id;
+  }
+
+  compararPrograma(o1:Programa, o2:Programa): boolean {
     if(o1 === undefined && o2 === undefined){
       return true;
     }

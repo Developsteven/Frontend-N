@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { TipoDocumento } from './tipoDocumento';
 import { Ficha } from './ficha';
 import { Trimestre } from './trimestre';
+import { Programa } from './programa';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,6 +25,10 @@ export class AprendizService {
 
   getFichas(): Observable<Ficha[]> {
     return this.http.get<Ficha[]>(this.urlEndpoint + '/fichas');
+  }
+
+  getProgramas(): Observable<Programa[]> {
+    return this.http.get<Programa[]>(this.urlEndpoint + '/programas');
   }
 
   getTrimestre(): Observable<Trimestre[]>{

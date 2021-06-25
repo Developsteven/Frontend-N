@@ -1,5 +1,6 @@
 import { Novedad } from "../novedades/novedad";
 import { Ficha } from "./ficha";
+import { Programa } from "./programa";
 import { TipoDocumento } from "./tipoDocumento";
 import { Trimestre } from "./trimestre";
 
@@ -16,4 +17,5 @@ export class Aprendiz {
     ficha: Ficha;
     trimestre: Trimestre;
     novedades: Novedad[] = [];
+    programa: Programa;
 }
