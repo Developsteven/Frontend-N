@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Novedad } from './novedad';
+import { Observacion } from './observacion';
 import { TipoNovedad } from './tipo-novedad';
 
 @Injectable({
@@ -23,6 +24,10 @@ export class NovedadService {
 
   getTipoNovedad(): Observable<TipoNovedad[]>{
     return this.http.get<TipoNovedad[]>(this.urlEndpoint + '/tipoNovedad');
+  }
+
+  createObservacion(observacion: Observacion): Observable<Observacion>{
+    return this.http.post<Observacion>(this.urlEndpoint, observacion);
   }
 
 }

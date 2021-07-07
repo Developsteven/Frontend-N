@@ -14,7 +14,7 @@ import { UsuarioService } from './usuario.service';
 export class FormularioComponent implements OnInit {
 
   public usuario: Usuario = new Usuario();
-  public titulo: string = "Crear Usuario"; 
+  public titulo: string = "Usuario"; 
   public errores: string[];
   public cargo: Cargo[];
   roles: Rol[];

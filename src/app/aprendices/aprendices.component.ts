@@ -18,6 +18,7 @@ export class AprendicesComponent implements OnInit {
   buscarAprendiz: Aprendiz;
   roles: string[];
   aprendiz: Aprendiz;
+  documento: string;
 
   constructor(
     private aprendizService: AprendizService,
@@ -51,13 +52,13 @@ export class AprendicesComponent implements OnInit {
     });
   }
 
-  buscar() {
+  buscar(term) {
     if (this.aprendiz.documento == null) {
       Swal.fire('Error', 'documento esta vacio!', 'error');
       return;
     }
-    this.aprendizService.getDocumento(this.aprendiz);
-    console.log(this.aprendiz.nombre)
+   /*  this.aprendizService.getDocumento(this.aprendiz); */
+    console.log(this.aprendiz.documento)
   }
 
   abrirModal(aprendiz: Aprendiz) {

@@ -67,7 +67,6 @@ export class AprendizService {
         }
         if (e.error.mensaje) {
           console.error(e.error.mensaje);
-          Swal.fire('Error', 'Email ya existe!', 'error');
         }
         return throwError(e);
       })
@@ -103,20 +102,8 @@ export class AprendizService {
       );
   }
 
-  getDocumento(aprendiz): Observable<any>{
+  getDocumento(term:string): Observable<Aprendiz[]>{
 
-    let params = new URLSearchParams();
-    params.set('documento', aprendiz.documento);
-    let term = params.toString();
-    console.log(term);
-    return this.http.get<any>(`${this.urlEndpoint}+ '/documento/' + ${term}`).pipe(
-      catchError((e) => {
-        if (e.status != 401 && e.error.mensaje) {
-          //this.router.navigate(['/aprendices']);
-          console.error(e.error.mensaje);
-        }
-        return throwError(e);
-      }) 
-    );
+    return this.http.get<Aprendiz[]>(`${this.urlEndpoint}/documento/${term}`);
   }
 }
