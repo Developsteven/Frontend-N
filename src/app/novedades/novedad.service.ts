@@ -11,6 +11,7 @@ import { TipoNovedad } from './tipo-novedad';
 export class NovedadService {
 
   private urlEndpoint: string = 'http://localhost:8089/api/novedades';
+  private urlEndpoint2: string = 'http://localhost:8089/api/observacion';
 
   constructor(private http: HttpClient) { }
 
@@ -27,7 +28,7 @@ export class NovedadService {
   }
 
   createObservacion(observacion: Observacion): Observable<Observacion>{
-    return this.http.post<Observacion>(this.urlEndpoint, observacion);
+    return this.http.post<Observacion>(this.urlEndpoint2, observacion);
   }
 
 }

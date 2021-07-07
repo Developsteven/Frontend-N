@@ -1,5 +1,11 @@
+import { Usuario } from "../usuarios/usuario";
+import { Novedad } from "./novedad";
+
 export class Observacion {
     id: number;
-    observacion: string;
+    descripcion: string;
     fecha: string;
+
+    novedad: Novedad;
+    usuario: Usuario;
 }

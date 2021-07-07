@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Aprendiz } from '../aprendices/aprendiz';
 import { Novedad } from './novedad';
 import { NovedadService } from './novedad.service';
+import { Observacion } from './observacion';
 
 @Component({
   selector: 'app-detalle-novedad',
@@ -11,6 +13,7 @@ import { NovedadService } from './novedad.service';
 export class DetalleNovedadComponent implements OnInit {
 
 novedad: Novedad;
+observacion: Observacion;
 titulo: string = 'Detalle de la Novedad';
 
   constructor(private novedadService: NovedadService, 

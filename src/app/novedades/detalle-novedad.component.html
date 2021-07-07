@@ -35,6 +35,13 @@
         <li class="list-group-item ">Descripcion de la novedad: {{novedad.descripcion}}</li>
       </ul>
 
+      <div class="form-group row mt-1">
+        <div class="col-sm-6">
+          <button type="button" [routerLink]="['/observacion/form', novedad.id]"
+            class="btn btn-success btn-sm">Agregar
+            Observacion</button>
+        </div>
+      </div>
 
     </div>
   </div>

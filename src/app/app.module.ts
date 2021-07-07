@@ -27,6 +27,7 @@ import { TokenInterceptor }from './usuarios/interceptors/token.interceptor';
 import { AuthInterceptor }from './usuarios/interceptors/auth.interceptor';
 import { RegistroComponent } from './usuarios/login/registro.component';
 import { DocumentosComponent } from './documentos/documentos.component';
+import { ObservacionComponent } from './novedades/observacion/observacion.component';
 
 
 
@@ -46,6 +47,7 @@ const routes: Routes =[
   {path: 'usuarios/formulario/:id', component: FormularioComponent, canActivate:[AuthGuard, RoleGuard], data: {role:'ROLE_ADMIN'}},
   {path: 'novedades/:id', component: DetalleNovedadComponent, canActivate:[AuthGuard]},
   {path: 'novedades/form/:aprendizId', component: NovedadesComponent, canActivate:[AuthGuard]},
+  {path: 'observacion/form/:novedadId', component: ObservacionComponent, canActivate:[AuthGuard]},
   {path: 'documentos', component: DocumentosComponent, canActivate:[AuthGuard]},
 ];
 
@@ -67,6 +69,7 @@ const routes: Routes =[
     LoginComponent,
     RegistroComponent,
     DocumentosComponent,
+    ObservacionComponent,
 
   ],
   imports: [
