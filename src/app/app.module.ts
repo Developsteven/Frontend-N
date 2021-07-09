@@ -28,7 +28,6 @@ import { AuthInterceptor }from './usuarios/interceptors/auth.interceptor';
 import { RegistroComponent } from './usuarios/login/registro.component';
 import { DocumentosComponent } from './documentos/documentos.component';
 import { ObservacionComponent } from './novedades/observacion/observacion.component';
-import { DetalleObservacionComponent } from './novedades/detalle-observacion/detalle-observacion.component';
 
 
 
@@ -71,7 +70,6 @@ const routes: Routes =[
     RegistroComponent,
     DocumentosComponent,
     ObservacionComponent,
-    DetalleObservacionComponent,
 
   ],
   imports: [
