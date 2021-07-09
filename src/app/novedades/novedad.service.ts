@@ -31,4 +31,8 @@ export class NovedadService {
     return this.http.post<Observacion>(this.urlEndpoint2, observacion);
   }
 
+  getObservacion(id:number): Observable<Observacion>{
+    return this.http.get<Observacion>(`${this.urlEndpoint2}/${id}`)
+  }
+
 }

@@ -13,5 +13,5 @@ export class Novedad {
     aprendiz: Aprendiz;
     tipoNovedad: TipoNovedad;
     usuario: Usuario;
-    observacion: Observacion;
+    observaciones: Observacion[] = [];
 }

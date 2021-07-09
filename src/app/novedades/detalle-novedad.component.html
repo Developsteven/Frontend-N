@@ -37,12 +37,38 @@
 
       <div class="form-group row mt-1">
         <div class="col-sm-6">
-          <button type="button" [routerLink]="['/observacion/form', novedad.id]"
-            class="btn btn-success btn-sm">Agregar
+          <button type="button" [routerLink]="['/observacion/form', novedad.id]" class="btn btn-success btn-sm">Agregar
             Observacion</button>
         </div>
       </div>
+      
+      <div class="row" >
+        <div class="alert alert-info my-4">
+          <!-- *ngIf="novedad.observaciones" -->
+          No hay observaciones
+        </div>
 
+        <table class="table table-bordered table-striped my-2">
+          <!-- *ngIf="novedad.observaciones" -->
+
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Fecha</th>
+              <th>descripcion</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let observacion of novedad.observaciones">
+              <td>{{observacion.id}}</td>
+              <td>{{observacion.fecha}}</td>
+              <td>{{observacion.descripcion}}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
     </div>
   </div>
 
