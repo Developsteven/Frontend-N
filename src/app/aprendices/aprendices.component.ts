@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import Swal from 'sweetalert2';
@@ -12,7 +12,7 @@ import { ModalService } from './detalle/modal.service';
   styleUrls: ['./aprendices.component.css'],
 })
 export class AprendicesComponent implements OnInit {
-  aprendices: Aprendiz[];
+  @Input() aprendices: Aprendiz[];
   paginador: any;
   aprendizSeleccionado: Aprendiz;
   buscarAprendiz: Aprendiz;
@@ -52,13 +52,12 @@ export class AprendicesComponent implements OnInit {
     });
   }
 
-  buscar(term) {
-    if (this.aprendiz.documento == null) {
-      Swal.fire('Error', 'documento esta vacio!', 'error');
-      return;
-    }
-   /*  this.aprendizService.getDocumento(this.aprendiz); */
-    console.log(this.aprendiz.documento)
+  receivedata(event: string): void{
+    console.log('father', event);
+    this.aprendizService.getDocumento$(event)
+    .subscribe( res => {
+      console.log('...', res);
+    })
   }
 
   abrirModal(aprendiz: Aprendiz) {

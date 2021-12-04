@@ -35,12 +35,33 @@
         <li class="list-group-item ">Descripcion de la novedad: {{novedad.descripcion}}</li>
       </ul>
 
-      <div class="form-group row mt-1">
+      <!-- <div class="form-group row mt-1">
         <div class="col-sm-6">
           <button type="button" [routerLink]="['/observacion/form', novedad.id]" class="btn btn-success btn-sm">Agregar
             Observacion</button>
         </div>
-      </div>     
+      </div> -->     
+
+     <!--  <div class="row">
+        <table class="table table-bordered table-striped my-2" >
+
+          <thead>
+            <tr>
+              <th>Titulo</th>
+              <th>Tipo Novedad</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let observacion of novedad.obsevaciones">
+              <td>{{observacion.id}}</td>
+              <td>{{observacion.descripcion}}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div> -->
+
     </div>
   </div>
 

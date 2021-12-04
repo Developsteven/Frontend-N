@@ -13,7 +13,7 @@ import { Observacion } from './observacion';
 export class DetalleNovedadComponent implements OnInit {
 
 novedad: Novedad;
-observacion: Observacion;
+observaciones: Observacion;
 titulo: string = 'Detalle de la Novedad';
 
   constructor(private novedadService: NovedadService, 
@@ -23,6 +23,7 @@ titulo: string = 'Detalle de la Novedad';
     this.activatedRouter.paramMap.subscribe(params => {
       let id = +params.get('id');
       this.novedadService.getNovedad(id).subscribe(novedad => this.novedad = novedad);
+      this.novedadService.getObservacion(id).subscribe(observacion => this.observaciones = observacion);
     })
   }
 

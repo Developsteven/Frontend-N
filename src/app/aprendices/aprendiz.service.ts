@@ -101,9 +101,14 @@ export class AprendizService {
         })
       );
   }
-
+/* 
   getDocumento(term:string): Observable<Aprendiz[]>{
 
     return this.http.get<Aprendiz[]>(`${this.urlEndpoint}/documento/${term}`);
+  } */
+
+  getDocumento$(term:string): Observable<any>{
+    return this.http.get(`${this.urlEndpoint}/documento?src=${term}`);
   }
+
 }

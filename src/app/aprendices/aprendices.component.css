@@ -28,3 +28,58 @@
 .btnVerde:hover{
     background-color: #26B431;
 }
+
+/* -------------------------------------- */
+
+.titulo-tabla{
+    color: #ffffff;
+    background-color: #1CA2A2;
+}
+
+.tabla-info{
+    margin-left: auto;
+    margin-right: auto;
+    width: 85%;
+    font-size: 16px;
+    border-collapse: collapse;
+}
+.tabla-info td, .tabla-info th{
+    height: 60px;
+    /* padding: 20px 0; */
+}
+.tabla-info td{
+    background-color: #F9F9F9;
+}
+
+/*--- tabla responsive ----*/
+@media(max-width: 850px){
+    .titulo-tabla{
+        display: none;
+    }
+    .tabla-info, .tabla-info tbody, .tabla-info tr, .tabla-info td{
+        display: block;
+        width: 100%
+    }
+    .tabla-info tr{
+        margin-bottom:15px
+    }
+    .tabla-info td{
+        padding-left: 50%;
+        text-align: center;
+        position: relative;
+        align-items: center;
+    }
+    .tabla-info td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        padding-top: 15px;
+        font-weight: bold;
+        text-align: center;
+        color: #ffffff;
+        background-color: #1CA2A2;
+    }
+    
+}

@@ -18,7 +18,6 @@
                   </li>
                   <li class="list-group-item">{{aprendiz.tipoDocumento.nombre}}: {{aprendiz.documento}}</li>
                   <li class="list-group-item">Email: {{ aprendiz.mail}}</li>
-                  
                 </ul>
               </div>
                 <div class="col-sm">
@@ -30,8 +29,6 @@
                     <!-- <li class="list-group-item">{{aprendiz.tipoDocumento}}</li> -->
                   </ul>
                 </div>
-
-              
             </div>
 
             <div class="form-group row mt-1">
@@ -48,7 +45,6 @@
               </div>
 
               <table class="table table-bordered table-striped my-2" *ngIf="aprendiz.novedades.length>0">
-
                 <thead>
                   <tr>
                     <th>Titulo</th>
@@ -65,17 +61,18 @@
                     <td>{{novedad.fecha}}</td>
                     <td><button class="btn btn-primary btn-sm" type="button"
                         [routerLink]="['/novedades', novedad.id]">Ver</button></td>
-
                   </tr>
                 </tbody>
-
               </table>
             </div>
+
           </div>
         </div>
+
         <div class="modal-footer">
           <button (click)="cerrarModal()" type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
         </div>
+        
       </div>
     </div>
   </div>
